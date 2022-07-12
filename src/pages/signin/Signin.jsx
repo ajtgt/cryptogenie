@@ -14,7 +14,7 @@ const Signin = () => {
         <div className="container" style={{ padding: "48px 72px" }}>
           <div
             type="button"
-            class="close d-flex justify-content-end"
+            className="close d-flex justify-content-end"
             style={{ fontSize: "18px" }}
           >
             <span aria-hidden="true">&times;</span>
