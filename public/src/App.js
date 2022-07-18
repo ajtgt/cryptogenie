@@ -15,11 +15,38 @@ import SettingProfile from "./pages/settingprofile/SettingProfile";
 import SettingProfileCopy from "./pages/settingprofile/SettingProfileCopy";
 import ForgetPassword from "./pages/forgetpassword/ForgetPassword";
 import ChangePassword from "./pages/changepassword/ChangePassword";
+import MainPage from "./pages/mainpage/MainPage";
 
 const App = () => {
   return (
     <div>
-      <Route exact path="/" component={SettingProfileCopy}></Route>
+      <div>
+        <Switch>
+          <Route exact path="/mainpage">
+            <MainPage />
+          </Route>
+          <Route exact path="/signin">
+            <Signin />
+          </Route>
+
+          <Route exact path="/contactus">
+            <Contactus />
+          </Route>
+          <Route exact path="/settingprofile">
+            <SettingProfile />
+          </Route>
+          <Route exact path="/settingprofilecopy">
+            <SettingProfileCopy />
+          </Route>
+
+          <Route exact path="/forgetpassword">
+            <ForgetPassword />
+          </Route>
+          <Route exact path="/changepassword">
+            <ChangePassword />
+          </Route>
+        </Switch>
+      </div>
     </div>
   );
 };
