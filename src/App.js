@@ -16,6 +16,12 @@ import SettingProfileCopy from "./pages/settingprofile/SettingProfileCopy";
 import ForgetPassword from "./pages/forgetpassword/ForgetPassword";
 import ChangePassword from "./pages/changepassword/ChangePassword";
 import MainPage from "./pages/mainpage/MainPage";
+import Signup from "./pages/signup/Signup";
+import TrendPrediction from "./pages/trendprediction/TrendPrediction";
+import ComingSoon from "./pages/comingsoon/ComingSoon";
+import DontLogIn from "./pages/dontlogin/DontLogIn";
+import UpgradePlan from "./pages/upgradeplan/UpgradePlan";
+import ProfilePage from "./pages/profilepage/ProfilePage";
 
 const App = () => {
   return (
@@ -44,6 +50,24 @@ const App = () => {
           </Route>
           <Route exact path="/changepassword">
             <ChangePassword />
+          </Route>
+          <Route exact path="/signup">
+            <Signup />
+          </Route>
+          <Route exact path="/trendprediction">
+            <TrendPrediction />
+          </Route>
+          <Route exact path="/comingsoon">
+            <ComingSoon />
+          </Route>
+          <Route exact path="/dontlogin">
+            <DontLogIn />
+          </Route>
+          <Route exact path="/upgradeplan">
+            <UpgradePlan />
+          </Route>
+          <Route exact path="/profilepage">
+            <ProfilePage />
           </Route>
         </Switch>
       </div>

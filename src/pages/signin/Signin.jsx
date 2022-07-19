@@ -77,9 +77,7 @@ const Signin = () => {
                   id="exampleCheck1"
                   style={{
                     marginRight: "11px",
-                    // fontSize: "18px",
                   }}
-                  // onClick={handleClick}
                 ></input>
                 <label
                   class="form-check-label"
