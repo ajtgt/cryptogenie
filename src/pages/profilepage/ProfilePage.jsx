@@ -269,7 +269,7 @@ const ProfilePage = () => {
         </div>
 
         {/* Fifth Row Precision Metrics */}
-        <div className="p-4 w-100 bg-light mt-4">
+        <div className="p-4 w-100 bg-light mt-4npm">
           {/* First Row */}
           <div className="d-flex flex-row justify-content-between align-items-center mb-4">
             {/* Left Side */}

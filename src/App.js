@@ -22,6 +22,7 @@ import ComingSoon from "./pages/comingsoon/ComingSoon";
 import DontLogIn from "./pages/dontlogin/DontLogIn";
 import UpgradePlan from "./pages/upgradeplan/UpgradePlan";
 import ProfilePage from "./pages/profilepage/ProfilePage";
+import Yantraka from "./pages/yantraka/Yantraka";
 
 const App = () => {
   return (
@@ -68,6 +69,9 @@ const App = () => {
           </Route>
           <Route exact path="/profilepage">
             <ProfilePage />
+          </Route>
+          <Route exact path="/yantraka">
+            <Yantraka />
           </Route>
         </Switch>
       </div>
