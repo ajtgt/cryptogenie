@@ -8,7 +8,7 @@ const Demo = () => {
           className="col-md-3 col-sm-6 bg-primary"
           style={{ width: "100rem" }}
         >
-          <div class="card" style={{ width: "100rem" }}>
+          <div class="card" style={{ width: "100npm srem" }}>
             <img class="card-img-top" alt="Card image cap" />
             <div class="card-body">
               <h5 class="card-title">Card title</h5>

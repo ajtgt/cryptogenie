@@ -29,7 +29,7 @@ const App = () => {
     <div>
       <div>
         <Switch>
-          <Route exact path="/mainpage">
+          <Route exact path="/">
             <MainPage />
           </Route>
           <Route exact path="/signin">

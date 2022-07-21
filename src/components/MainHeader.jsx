@@ -1,6 +1,7 @@
 import React from "react";
 import Union from "../assets/Union.svg";
-import Avatar from "../assets/Avatar.svg";
+import LoginButton from "../components/LoginButton";
+import LogoutButton from "../components/LogoutButton";
 
 const MainHeader = () => {
   return (
@@ -46,40 +47,9 @@ const MainHeader = () => {
             </li>
           </ul>
         </div>
-        <div
-          className="col d-flex justify-content-end"
-          style={{ marginRight: "79px" }}
-        >
-          <div>
-            <img
-              src={Avatar}
-              alt="Avatar"
-              style={{ width: "24px", height: "24px" }}
-            ></img>
-          </div>
-
-          {/* <img alt="Avatar" style={{ width: "24px", height: "24px" }}></img> */}
-          <div class="dropdown ">
-            <div class="btn dropdown-toggle" data-bs-toggle="dropdown"></div>
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" href="#">
-                  MyProfile
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#">
-                  Setting
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#">
-                  Log Out
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
+        {/* LogIn Button */}
+        <LoginButton />
+        <LogoutButton />
       </div>
     </div>
   );
