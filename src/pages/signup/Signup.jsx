@@ -1,130 +1,122 @@
 import React from "react";
-import Banner from "../../assets/Banner.svg";
+import SignUpBanner from "../../assets/SignUp/SignUpBanner.svg";
 
-const Signup = () => (
-  <div>
-    <div className="conatiner-fluid d-flex flex-row g-0 ">
-      {/* Banner */}
-      <div ClassName="w-640 h-900">
-        <img src={Banner}></img>
+const SignUp = () => {
+  return (
+    <div className="row">
+      {/* Img Start */}
+      <div className="col-sm-6 d-none d-sm-block">
+        <img src={SignUpBanner} className="img-fluid" />
       </div>
-      {/* Form */}
-      <div ClassName="g-0 d-flex flex-row justify-content-center h-900">
-        <div className="mt-5 ms-5 ps-5">
-          <div className="w-480 ps-3">
-            <div ClassName=" ">
-              <h2 className="mb-5 pb-1">
-                <b className="">Sign Up</b>
-              </h2>
-            </div>
-            {/* Google And LinkedIn SignUp Start */}
-            <div className="row d-flex flex-row h-56 g-0 mb-5 pb-1 ">
-              <div
-                className="col d-flex justify-content-center align-items-center border "
-                type="submit"
-              >
-                <img
-                  alt="Google"
-                  src="https://assets-yantraka-cryptogenie.s3.us-east-2.amazonaws.com/images/Google.svg"
-                />
-                &nbsp; Sign in with Google
-              </div>
-
-              <div
-                className="col d-flex ms-4 justify-content-center align-items-center border"
-                type="submit"
-              >
-                <img
-                  alt="Linkedln"
-                  src="https://assets-yantraka-cryptogenie.s3.us-east-2.amazonaws.com/images/linkedin.svg"
-                />
-                &nbsp; Sign in with Linkedin
-              </div>
-            </div>
-            {/* Google And LinkedIn SignUp Start */}
-            {/* Horizontal Line */}
-            <div className="mb-5 pb-1">
+      {/* Img End */}
+      {/* Typo Form Start */}
+      <div className="col-12 col-sm-6 p-5">
+        <div className="h2 mb-5">Sign Up</div>
+        <form>
+          {/* Google And Google SignUp Start */}
+          <div className="row d-sm-flex flex-sm-row g-3 m-0 mb-5">
+            <button
+              type="submit"
+              class="col-sm-12 col-md-6 col-12 btn btn-outline-light text-dark"
+            >
+              <img
+                alt="Google"
+                src="https://assets-yantraka-cryptogenie.s3.us-east-2.amazonaws.com/images/Google.svg"
+              />
+              &nbsp; Sign in with Google
+            </button>
+            <button
+              type="submit"
+              class="col-sm-12 col-md-6 col-12 btn btn-outline-light text-dark"
+            >
+              <img
+                alt="Google"
+                src="https://assets-yantraka-cryptogenie.s3.us-east-2.amazonaws.com/images/linkedin.svg"
+              />
+              &nbsp; Sign in with Linkedin
+            </button>
+          </div>
+          {/* OR Line   Start */}
+          <div class="row mb-3">
+            <div class="col">
               <hr></hr>
             </div>
-
-            {/* Name Input */}
-            <div className="d-flex justify-content-center align-items-center mb-3 ">
-              {/* First Name */}
-              <div className="h-56 w-50 me-4">
-                <input
-                  type="text"
-                  className="form-control h-100 w-100"
-                  id="firstname"
-                  placeholder="First Name"
-                ></input>
-              </div>
-              {/* Last Name */}
-              <div className="h-56 w-50">
-                <input
-                  type="text"
-                  class="form-control h-100"
-                  id="firstname"
-                  placeholder="Last Name"
-                ></input>
-              </div>
-            </div>
-            {/* Email */}
-            <div className="h-56 w-45 mb-3">
-              <input
-                type="email"
-                class="form-control h-100"
-                id="email"
-                placeholder="Your email address"
-              ></input>
-            </div>
-            {/* New Password */}
-            <div className="h-56 w-100 mb-3">
-              <input
-                type="text"
-                class="form-control h-100"
-                id="createpassword"
-                placeholder="Create password"
-              ></input>
-            </div>
-            {/* Confirm password */}
-            <div className="h-56 w-100 mb-3">
-              <input
-                type="text"
-                class="form-control h-100"
-                id="confirmyourpassword"
-                placeholder="Confirm your password"
-              ></input>
-            </div>
-            <div className="d-flex flex-row justify-content-center align-items-start mb-5 pb-2">
-              <div>
-                <input
-                  type="checkbox"
-                  className="form-check-input me-1"
-                  id="exampleCheck1"
-                  style={{
-                    marginRight: "11px",
-                  }}
-                ></input>
-              </div>
-
-              <div ClassName="ms-2">
-                <h7>
-                  By accepting your agree to Yantraka.AI's Terms of Use &
-                  Privacy Policy
-                </h7>
-              </div>
-            </div>
-            {/* Button */}
-            <div className="h-56 w-100 btn-purple ">
-              <button type="submit" class="btn h-100 w-100 text-white">
-                Sign In
-              </button>
+            <div class="col-auto">OR</div>
+            <div class="col">
+              <hr></hr>
             </div>
           </div>
+          {/* OR Line   End */}
+
+          {/* Form Start */}
+          <div class="form-group mb-3">
+            <div className="row d-sm-flex flex-sm-row">
+              <div class="col-sm-12 col-md-6 col-12 ">
+                <label for="exampleFirstName">First Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="First Name"
+                />
+              </div>
+              <div class="col-sm-12 col-12 col-md-6 ">
+                <label for="exampleLastName">Last Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Last Name"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Enter Your Email"
+            />
+          </div>
+          <div class="form-group mb-3">
+            <label for="exampleInputPassword1">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="exampleInputPassword"
+              placeholder="Password"
+            />
+          </div>
+          <div class="form-group mb-3">
+            <label for="exampleConfirmPassword">Confirm Your Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="exampleConfirmPassword1"
+              placeholder="Password"
+            />
+          </div>
+          <div class="form-group form-check mb-5">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="exampleCheck1"
+            />
+            <label class="form-check-label" for="exampleCheck1">
+              By accepting your agree to Yantraka.AI's Terms of Use & Privacy
+              Policy
+            </label>
+          </div>
+          <button type="submit" class="col-sm-12 col-12 btn btn-primary mb-3">
+            Create account
+          </button>
+        </form>
+        <div className="d-flex d-sm-flex justify-content-center justify-content-sm-center">
+          Already a user? <a>Sign In</a>
         </div>
       </div>
+      {/* Typo Form Start */}
     </div>
-  </div>
-);
+  );
+};
 
-export default Signup;
+export default SignUp;

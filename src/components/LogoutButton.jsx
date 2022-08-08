@@ -1,5 +1,5 @@
 import React from "react";
-import Avatar from "../assets/Avatar.svg";
+import Avatar from "../assets/Header/Avatar.svg";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const LogoutButton = () => {
@@ -7,29 +7,17 @@ const LogoutButton = () => {
   return (
     <>
       {isAuthenticated && (
-        <div
-          className="col d-flex justify-content-end"
-          style={{ marginRight: "79px" }}
-        >
+        <div className="col d-flex justify-content-end">
           <div>
-            <img
-              src={Avatar}
-              alt="Avatar"
-              style={{ width: "24px", height: "24px" }}
-            ></img>
+            <img src={Avatar} alt="Avatar" classsName="img-fluid"></img>
           </div>
 
           <div class="dropdown ">
             <div
-              class="btn dropdown-toggle d-flex justify-content-center"
+              class="btn dropdown-toggle d-flex justify-content-center align-items-center"
               data-bs-toggle="dropdown"
             ></div>
             <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" href="#">
-                  MyProfile
-                </a>
-              </li>
               <li>
                 <a class="dropdown-item" href="#">
                   Setting

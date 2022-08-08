@@ -1,49 +1,50 @@
 import React from "react";
-
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import TrendCards from "../../components/TrendCards";
+import CoinInfoBlock from "../../components/CoinInfoBlock";
 
 const DontLogIn = () => {
   return (
     <div>
       <Header />
-      <div className="container-fluid g-0 ">
-        {/* Header */}
-        <div className="d-flex justify-content-between py-4 px-5  ">
-          <div>
-            <h1>Trend Predictions</h1>
-          </div>
-          {/* Dropdown */}
-          <div class="dropdown d-flex  align-items-center">
+      <div className="container d-flex justify-content-between  my-4 ">
+        <div className="h3">Trend Prediction</div>
+        <div className="">
+          <div class="dropdown">
             <div
+              class=" dropdown-toggle"
               type="button"
-              class="dropdown-toggle"
+              id="dropdownMenuButton1"
               data-bs-toggle="dropdown"
+              aria-expanded="false"
             >
-              Sort by:<b>Tether</b>
+              Sort by : Tether
             </div>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li>
                 <a class="dropdown-item" href="#">
-                  Link 1
+                  Action
                 </a>
               </li>
               <li>
                 <a class="dropdown-item" href="#">
-                  Link 2
+                  Another action
                 </a>
               </li>
               <li>
                 <a class="dropdown-item" href="#">
-                  Link 3
+                  Something else here
                 </a>
               </li>
             </ul>
           </div>
         </div>
-        <TrendCards />
-        <TrendCards />
+      </div>
+      <div className="mb-5">
+        <CoinInfoBlock />
+      </div>
+      <div className="mb-5">
+        <CoinInfoBlock />
       </div>
 
       <Footer />

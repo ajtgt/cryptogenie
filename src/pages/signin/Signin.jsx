@@ -1,182 +1,186 @@
 import React from "react";
 
-const Signin = () => {
+const SignIn = () => {
   return (
-    <div
-      className="container-fluid d-flex justify-content-center align-items-center"
-      style={{
-        height: "100%",
-        backgroundColor: "#999999",
-        padding: "50px",
-      }}
-    >
-      <div className="card">
-        <div className="container" style={{ padding: "48px 72px" }}>
+    <>
+      {/* Desktop View  */}
+      <div className=" row d-md-flex bg-secondary h-100 w-100 justify-content-md-center p-5 d-none d-md-block">
+        <div className="card col-md-6 py-3 px-5 ">
+          {/* Close Button */}
           <div
             type="button"
-            className="close d-flex justify-content-end"
-            style={{ fontSize: "18px" }}
+            className="close btn-lg d-sm-flex justify-content-sm-end"
           >
             <span aria-hidden="true">&times;</span>
           </div>
-          <div className="h2" style={{ marginBottom: "24px" }}>
-            Sign In
-          </div>
-
-          <form>
-            <div class="form-group">
-              <label
-                id="email"
-                for="email"
-                class="form-label collapse"
-                style={{ fontSize: "12px", color: "#757883" }}
-              >
-                Email
-              </label>
+          {/* Form Start */}
+          <div className="h1 mb-4">SignIn</div>
+          <div class="row">
+            <label for="email">Email</label>
+            <div class="col-md-12 mb-3">
               <input
                 type="email"
                 class="form-control"
-                style={{ height: "56px", width: "448px", marginBottom: "16px" }}
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
                 placeholder="Email"
+                aria-label="Email"
               ></input>
             </div>
-            <div class="form-group">
-              <label
-                id="password"
-                for="pwd"
-                class="form-label collapse"
-                style={{ fontSize: "12px", color: "#757883" }}
-              >
-                Password
-              </label>
+            <div class="col-md-12 mb-3">
+              <label for="password">Password</label>
               <input
                 type="password"
                 class="form-control"
-                style={{ height: "56px", width: "448px", marginBottom: "16px" }}
-                id="exampleInputPassword1"
                 placeholder="Password"
+                aria-label="Password"
               ></input>
             </div>
-            {/* 
-
-            Tick Input 
-
-            */}
-            <div
-              class="row d-flex flex-row form-group form-check"
-              style={{ marginBottom: "40px" }}
-            >
-              <div className="col d-flex justify-content-start">
+            <div class="d-sm-flex justify-content-between ">
+              <div class="form-check mb-5">
                 <input
                   type="checkbox"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#email, #password"
                   class="form-check-input"
                   id="exampleCheck1"
-                  style={{
-                    marginRight: "11px",
-                  }}
-                ></input>
-                <label
-                  class="form-check-label"
-                  for="exampleCheck1"
-                  style={{ fontSize: "14px", color: "#000000" }}
-                >
+                />
+                <label class="form-check-label" for="exampleCheck1">
                   Remember me
                 </label>
               </div>
-              <div className="col d-flex justify-content-end">
-                <label
-                  class="form-check-label text-primary"
-                  style={{ fontSize: "14px", color: "#6B38FD" }}
-                >
-                  Forget password?
-                </label>
-              </div>
+              <div>Forgot password?</div>
             </div>
-            <button
-              type="submit"
-              class="btn "
-              style={{
-                height: "56px",
-                width: "448px",
-                marginBottom: "52px",
-                backgroundColor: "#6237de",
-                color: "#ffffff",
-                fontSize: "16px",
-              }}
-            >
-              Sign In
-            </button>
-
-            <div className="row d-flex" style={{ marginBottom: "52px" }}>
-              <div className="col-5 ">
+            <div className="col-sm-12 mb-5">
+              <button type="submit" class="col-sm-12 col-12 btn btn-primary ">
+                Sign In
+              </button>
+            </div>
+            {/* OR LINE */}
+            <div class="row mb-5">
+              <div class="col-sm">
                 <hr></hr>
               </div>
-              <div
-                className="col-2 d-flex justify-content-center "
-                style={{ fontSize: "14px" }}
-              >
-                <p>OR</p>
-              </div>
-              <div className="col-5 ">
+              <div class="col-auto">OR</div>
+              <div class="col-sm">
                 <hr></hr>
               </div>
             </div>
-            <div
-              className="row d-flex flex-row "
-              style={{
-                height: "56px",
-                width: "448px",
-                marginBottom: "40px",
-                marginLeft: "0px",
-                fontSize: "16px",
-              }}
-            >
-              <div
-                className="col d-flex align-items-center border"
+          </div>
+          {/* Form End  */}
+          {/* Google and Linked In Sign IN */}
+          {/* <div className="row d-sm-flex flex-sm-row g-3 m-0 mb-5">
+          <button
+            type="submit"
+            class="col-sm-12 col-md-6 col-12 btn btn-outline-light text-dark"
+          >
+            <img
+              alt="Google"
+              src="https://assets-yantraka-cryptogenie.s3.us-east-2.amazonaws.com/images/Google.svg"
+            />
+            &nbsp; Sign in with Google
+          </button>
+          <button
+            type="submit"
+            class="col-sm-12 col-md-6 col-12 btn btn-outline-light text-dark"
+          >
+            <img
+              alt="Google"
+              src="https://assets-yantraka-cryptogenie.s3.us-east-2.amazonaws.com/images/linkedin.svg"
+            />
+            &nbsp; Sign in with Linkedin
+          </button>
+        </div>
+        ================================================= */}
+          <div class="row mb-5">
+            <div class="col">
+              <button
                 type="submit"
+                class="btn btn btn-outline-secondary  w-100"
               >
                 <img
                   alt="Google"
                   src="https://assets-yantraka-cryptogenie.s3.us-east-2.amazonaws.com/images/Google.svg"
                 />
                 &nbsp; Sign in with Google
-              </div>
-
-              <div
-                className="col d-flex align-items-center border"
+              </button>
+            </div>
+            <div class="col">
+              <button
                 type="submit"
-                style={{ marginLeft: "25px" }}
+                class="btn btn btn-outline-secondary  w-100"
               >
                 <img
-                  alt="Linkedln"
+                  alt="Google"
                   src="https://assets-yantraka-cryptogenie.s3.us-east-2.amazonaws.com/images/linkedin.svg"
                 />
                 &nbsp; Sign in with Linkedin
+              </button>
+            </div>
+          </div>
+          <div className="d-sm-flex justify-content-center mb-5">
+            Don't have an account?Sign Up
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile View */}
+      <div className="d-block d-md-none">
+        <div className="row py-4 px-3">
+          {/* Title */}
+          <div className="d-flex d-sm-flex justify-content-between justify-content-sm-between mb-4">
+            <div className="h3">Sign In</div>
+            <div className="">
+              <div
+                type="button"
+                className="close btn-lg d-sm-flex justify-content-sm-end"
+              >
+                <span aria-hidden="true">&times;</span>
               </div>
             </div>
-            <div className="row ">
-              <div
-                className="col d-flex justify-content-center"
-                style={{ fontSize: "16px" }}
-              >
-                Don't have an account? &nbsp; &nbsp;
-                <a
-                  href="#"
-                  style={{ textDecoration: "none", color: "#6237DE" }}
-                >
-                  Sign Up
-                </a>
+          </div>
+
+          <form class="row g-3">
+            <div class="col-12">
+              <label for="Email" class="form-label">
+                Email
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Email"
+              ></input>
+            </div>
+            <div class="col-12">
+              <label for="password" class="form-label">
+                Password
+              </label>
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Password"
+              ></input>
+            </div>
+
+            <div class="col-6">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="gridCheck"
+                ></input>
+                <label class="form-check-label" for="gridCheck">
+                  Remember
+                </label>
               </div>
+            </div>
+            <div class="col-6 d-flex justify-content-end">Forget Password</div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary">
+                Sign in
+              </button>
             </div>
           </form>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
-export default Signin;
+export default SignIn;

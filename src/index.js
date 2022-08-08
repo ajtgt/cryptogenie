@@ -1,10 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./custom.scss";
+import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Auth0Provider } from "@auth0/auth0-react";
 
@@ -19,6 +17,7 @@ root.render(
         domain={domain}
         clientId={clientId}
         redirectUri={window.location.origin}
+        // audience="https://express.sample"
       >
         <App />
       </Auth0Provider>

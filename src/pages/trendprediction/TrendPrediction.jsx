@@ -1,73 +1,79 @@
 import React from "react";
-
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import TrendCards from "../../components/TrendCards";
+import CoinInfoBlock from "../../components/CoinInfoBlock";
 
-// import Btccoin from "../../assets/Btccoin.svg";
-// import Tcoin from "../../assets/Tcoin.svg";
-// import SandClock from "../../assets/SandClock.svg";
-// import ArrowBtn from "../../assets/ArrowBtn.svg";
-// import ProgressLine from "../../assets/ProgressLine.svg";
-// import CircleRatio from "../../assets/CircleRatio.svg";
-// import Circle from "../../assets/Circle.svg";
-// import Ranging from "../../assets/Ranging.svg";
-// import Minus from "../../assets/Minus.svg";
-import Disclaimer from "../../assets/Disclaimer.svg";
+// import Caution from "../../assets/TrendPediction/Caution.png";
+import TrendDisclaimer from "../../assets/TrendPediction/TrendDisclaimer.svg";
 
 const TrendPrediction = () => {
   return (
-    <>
+    <div>
       <Header />
-      <div className="container-fluid g-0 ">
-        {/* Header */}
-        <div className="d-flex justify-content-between py-4 px-5  ">
-          <div>
-            <h1>Trend Predictions</h1>
-          </div>
-          {/* Dropdown */}
-          <div class="dropdown d-flex  align-items-center">
+      <div className="container d-flex justify-content-between  my-4 ">
+        <div className="h3">Trend Prediction</div>
+        <div className="">
+          <div class="dropdown">
             <div
+              class=" dropdown-toggle"
               type="button"
-              class="dropdown-toggle"
+              id="dropdownMenuButton1"
               data-bs-toggle="dropdown"
+              aria-expanded="false"
             >
-              Sort by:<b>Tether</b>
+              Sort by : Tether
             </div>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li>
                 <a class="dropdown-item" href="#">
-                  Link 1
+                  Action
                 </a>
               </li>
               <li>
                 <a class="dropdown-item" href="#">
-                  Link 2
+                  Another action
                 </a>
               </li>
               <li>
                 <a class="dropdown-item" href="#">
-                  Link 3
+                  Something else here
                 </a>
               </li>
             </ul>
           </div>
         </div>
-
-        {/* Trend Prediction Full container */}
-        <TrendCards />
-        <TrendCards />
-        <TrendCards />
-        <TrendCards />
-        <TrendCards />
-        <TrendCards />
-        <div className="mx-5">
-          <img className="w-100" src={Disclaimer}></img>
+      </div>
+      <div className="mb-5">
+        <CoinInfoBlock />
+      </div>
+      <div className="mb-5">
+        <CoinInfoBlock />
+      </div>
+      <div className="mb-5">
+        <CoinInfoBlock />
+      </div>
+      <div className="mb-5">
+        <CoinInfoBlock />
+      </div>
+      <div className="mb-5">
+        <CoinInfoBlock />
+      </div>
+      <div className="container ">
+        <div className="row">
+          <div className="col-sm-12 col-12 mb-5">
+            <img src={TrendDisclaimer} className="w-100 h-100" />
+            {/* <img src={Caution} alt="caution" /> */}
+          </div>
+          {/* <div className="col-sm-9 col-12">
+          dfuysahjkserdfghu6SBDDBFHIUWHEFBEWQUGRBWEFIQUTHULIERBGQBTQER
+          TBRBTKUYGTBBGUTBVBVJAGFAFGBALDSFUGQIGBFWBGEQRLTBQRITBQR
+        </div> */}
+          {/* <img src={TrendDisclaimer} className="w-100 h-100" /> */}
         </div>
       </div>
 
       <Footer />
-    </>
+    </div>
   );
 };
 
