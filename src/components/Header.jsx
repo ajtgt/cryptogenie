@@ -2,7 +2,7 @@ import { React, useEffect } from "react";
 import Logo from "../assets/Header/Logo.svg";
 import LoginButton from "../components/LoginButton";
 import LogoutButton from "../components/LogoutButton";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 
 const Header = () => {
   const { pathname, hash, key } = useLocation();
@@ -22,6 +22,11 @@ const Header = () => {
       }, 0);
     }
   }, [pathname, hash, key]); // do this on route change
+
+  let history = useHistory();
+  const Prediction1 = () => {
+    history.push("/trendprediction");
+  };
 
   return (
     <>
@@ -50,26 +55,30 @@ const Header = () => {
             id="navbarSupportedContent"
           >
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
+              <Link to="/" class="nav-item text-decoration-none">
+                <a class="nav-link active" aria-current="page" href="#home">
                   Home
                 </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
+              </Link>
+              <Link to="/#features" class="nav-item text-decoration-none">
+                <a class="nav-link active" aria-current="page" href="#features">
                   Features
                 </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
+              </Link>
+              <Link to="/#pricing" class="nav-item text-decoration-none">
+                <a class="nav-link active" aria-current="page" href="#pricing">
                   Pricing
                 </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
+              </Link>
+              <Link onClick={Prediction1} class="nav-item text-decoration-none">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="#prediction"
+                >
                   Prediction
                 </a>
-              </li>
+              </Link>
             </ul>
           </div>
           <div class="d-flex">
@@ -106,22 +115,26 @@ const Header = () => {
           >
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item d-flex justify-content-center">
-                <a class="nav-link active" aria-current="page" href="#">
+                <a class="nav-link active" aria-current="page" href="#home">
                   Home
                 </a>
               </li>
               <li class="nav-item d-flex justify-content-center">
-                <a class="nav-link active" aria-current="page" href="#">
+                <a class="nav-link active" aria-current="page" href="#features">
                   Features
                 </a>
               </li>
               <li class="nav-item d-flex justify-content-center">
-                <a class="nav-link active" aria-current="page" href="#">
+                <a class="nav-link active" aria-current="page" href="#pricing">
                   Pricing
                 </a>
               </li>
               <li class="nav-item d-flex justify-content-center">
-                <a class="nav-link active" aria-current="page" href="#">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="#prediction"
+                >
                   Prediction
                 </a>
               </li>

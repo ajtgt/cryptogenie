@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "monthly": "Free",
+    "yearly": "Sign Up Required ",
+    "features": [
+      "BTCUSDT & ETHUSDT",
+      "Current Trend Predictions",
+      "Charts & Prediction Metrics"
+    ]
+  },
+  {
+    "id": 2,
+    "monthly": "₹ 10 /per month",
+    "yearly": "Yearly : ₹ 108 (10% discount)",
+    "features": [
+      "10 Crypto Asset Pairs",
+
+      "Current Trend Predictions",
+
+      "Charts & Prediction Metrics"
+    ]
+  },
+  {
+    "id": 3,
+    "monthly": "₹ 60 /per month",
+    "yearly": "Yearly : ₹ 576 (20% discount) ",
+    "features": [
+      "10 Crypto Asset Pairs",
+
+      "Current Trend Predictions",
+
+      "Charts & Prediction Metrics",
+
+      "Bet Sizing, Average True Range",
+
+      "Prediction & Tradable Capacity metrics"
+    ]
+  },
+  {
+    "id": 4,
+    "monthly": "Contact Us",
+    "yearly": "",
+    "features": [
+      "API access",
+      "Example Trading bot templates",
+      "More asset pairs. "
+    ]
+  }
+]

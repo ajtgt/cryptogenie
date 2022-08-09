@@ -1,4 +1,6 @@
 import React from "react";
+import { useHistory, Link } from "react-router-dom";
+
 import Bitcoin from "../assets/TrendPediction/Bitcoin.svg";
 import Tether from "../assets/TrendPediction/Tether.svg";
 import TetherBatch from "../assets/TrendPediction/TetherBatch.svg";
@@ -6,6 +8,10 @@ import Timer from "../assets/TrendPediction/Timer.svg";
 import NextButton from "../assets/TrendPediction/NextButton.svg";
 
 const TrendPredictionHeader = () => {
+  // let history = useHistory();
+  // const CPP = () => {
+  //   history.push("/cryptoprofilepage");
+  // };
   return (
     <div>
       <div className="container mb-4">
@@ -36,7 +42,9 @@ const TrendPredictionHeader = () => {
                 </div>
                 <div className="me-4 d-lg-flex justify-content-lg-center  align-items-lg-center">
                   <div type="button">
-                    <img src={NextButton} />
+                    <a href="/cryptoprofilepage">
+                      <img src={NextButton} />
+                    </a>
                   </div>
                 </div>
               </div>
@@ -50,9 +58,11 @@ const TrendPredictionHeader = () => {
               </div>
               <div className="d-lg-flex flex-lg-row ">
                 <div className="me-4 d-lg-flex justify-content-lg-center  align-items-lg-center">
-                  <div type="button">
-                    <img src={NextButton} className="img-fluid" />
-                  </div>
+                  <button type="button" className="btn">
+                    <a href="/cryptoprofilepage">
+                      <img src={NextButton} className="img-fluid" />
+                    </a>
+                  </button>
                 </div>
               </div>
             </div>

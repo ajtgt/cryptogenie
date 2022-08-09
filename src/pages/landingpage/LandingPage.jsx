@@ -1,5 +1,7 @@
 import React from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+
+import plansData from "./plansData.json";
 
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
@@ -22,12 +24,14 @@ import Map from "../../assets/LandingPage/Map.svg";
 import Logo from "../../assets/Header/Logo.svg";
 
 import PricingCards from "../../components/PricingCards";
+import PricingCardsM from "../../components/PricingCardsM";
 
 const LandingPage = () => {
   let history = useHistory();
   const Prediction = () => {
     history.push("/trendprediction");
   };
+
   return (
     <div>
       <Header />
@@ -268,26 +272,15 @@ const LandingPage = () => {
             to create models that generate predictive trends for crypto assets.
           </div>
         </div>
-
         {/* Cards */}
-        <div className="row d-sm-flex flex-sm-row d-none d-sm-block g-3 ">
-          <div className="col-sm-6 col-md-3">
-            <PricingCards />
-          </div>
-          <div className="col-sm-6 col-md-3">
-            <PricingCards />
-          </div>
-          <div className="col-sm-6 col-md-3">
-            <PricingCards />
-          </div>
-          <div className="col-sm-6 col-md-3">
-            <PricingCards />
-          </div>
-        </div>
+        {/* ======================================================================= */}
+        {/* <div className="row d-sm-flex d-lg-flex flex-lg-row flex-sm-row d-none d-sm-block g-3 ">
+          <div className="col-sm-6 col-md-3"> */}
+        <PricingCards data={plansData} />
+        {/* </div>
+        </div> */}
         {/* Cards ^^^*/}
-
         {/* Caurosel Cards Start */}
-
         {/* <div className="row d-sm-flex flex-sm-row d-block d-sm-none"> */}
         <div className="row d-flex flex-row d-block d-sm-none">
           <div
@@ -327,7 +320,7 @@ const LandingPage = () => {
               <div class="carousel-item active">
                 <div className="row">
                   <div className="col-12">
-                    <PricingCards />
+                    <PricingCardsM />
                   </div>
                 </div>
               </div>
@@ -335,7 +328,7 @@ const LandingPage = () => {
               <div class="carousel-item">
                 <div className="row">
                   <div className="col-12">
-                    <PricingCards />
+                    <PricingCardsM data={plansData} />
                   </div>
                 </div>
               </div>
@@ -343,7 +336,7 @@ const LandingPage = () => {
               <div class="carousel-item">
                 <div className="row">
                   <div className="col-12">
-                    <PricingCards />
+                    <PricingCardsM data={plansData} />
                   </div>
                 </div>
               </div>
@@ -351,7 +344,7 @@ const LandingPage = () => {
               <div class="carousel-item">
                 <div className="row">
                   <div className="col-12">
-                    <PricingCards />
+                    <PricingCardsM data={plansData} />
                   </div>
                 </div>
               </div>
@@ -382,7 +375,6 @@ const LandingPage = () => {
             </button>
           </div>
         </div>
-
         {/* Caurosel Cards End */}
       </div>
       {/* Pricing ^^^^^ */}

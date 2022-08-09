@@ -7,6 +7,7 @@ import CoinInfoBlock from "../../components/CoinInfoBlock";
 import TrendDisclaimer from "../../assets/TrendPediction/TrendDisclaimer.svg";
 
 const TrendPrediction = () => {
+
   return (
     <div>
       <Header />
