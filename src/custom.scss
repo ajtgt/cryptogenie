@@ -1,88 +1,41 @@
-@import "../node_modules/bootstrap/scss/functions";
-@import "../node_modules/bootstrap/scss/variables";
-@import "../node_modules/bootstrap/scss/utilities";
+@import "../node_modules/bootstrap/scss/functions.scss";
+@import "../node_modules/bootstrap/scss/variables.scss";
+@import "../node_modules/bootstrap/scss/utilities.scss";
+// $utilities: (
+//   "width": (
+//     property: width,
+//     class: w,
+//     values: (
+//       20: 20px,
+//       auto: auto,
+//     ),
+//   ),
+//   "height": (
+//     property: height,
+//     class: h,
+//     values: (
+//       8: 8px,
+//       auto: auto,
+//     ),
+//   ),
+// );
 
-$utilities: (
-  "width": (
-    property: width,
-    class: w,
-    values: (
-      25: 25%,
-      50: 50%,
-      75: 75%,
-      100: 100%,
-      8: 8.48px,
-      12: 12px,
-      20: 20px,
-      48: 48px,
-      56: 56px,
-      80: 80px,
-      120: 120px,
-      164: 164px,
-      132: 132px,
-      136:136px,
-      192: 192px,
-      224: 224px,
-      256: 256px,
-      240: 240px,
-      304: 304px,
-      322: 322px,
-      338: 338px,
-      416: 416px,
-      438: 438px,
-      480: 480px,
-      613: 613.8px,
-      640: 640px,
-      664: 664px,
-      669: 669.24px,
-
-      800: 800px,
-      864: 864px,
-      1090: 1090px,
-      1088: 1088px,
-      1304: 1304px,
-
-      auto: auto,
-    ),
-  ),
-  "height": (
-    property: height,
-    class: h,
-    values: (
-      8: 8px,
-      8.5: 8.48px,
-      20: 20px,
-      24: 24px,
-      32: 32px,
-      40: 40px,
-      48: 48px,
-      56: 56px,
-      80: 80px,
-      136: 136px,
-      224: 224px,
-      256: 256px,
-      376: 376px,
-      400: 400px,
-      504: 504px,
-      517: 517px,
-      900: 900px,
-      auto: auto,
-    ),
-  ),
-);
+// $theme-colors: (
+//   "purple": #6237de,
+//   "gray": #eef1f4,
+//   "lightgray": #f3f3f3,
+//   "darkgray": #757883,
+//   "lightgreen": #51d9b8,
+// );
 
 $theme-colors: (
+  //   primary: $purple,
   "purple": #6237de,
-  "gray": #eef1f4,
-  "lightgray": #f3f3f3,
-  "darkgray": #757883,
-  "lightgreen": #51d9b8,
+  primary: #6237de,
+  secondary: #f3f3f3
 );
 
-// $primary: #6237de;
-
-// // $font-weight-bold: 700;
+// $primary: #6237de; // // $font-weight-bold: 700;
 // // $font-weight-normal: 400;
-
 // @import "~bootstrap/scss/bootstrap";
 @import "~bootstrap/scss/bootstrap.scss";

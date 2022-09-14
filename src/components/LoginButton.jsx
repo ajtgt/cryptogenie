@@ -1,30 +1,82 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+
+import { login } from "../features/user/userSlice";
 
 import Avatar from "../assets/Header/Avatar.svg";
 
 const LoginButton = () => {
+  function changeBackground1(e) {
+    e.target.style.background = "#6237de";
+    e.target.style.color = "white";
+  }
+  function changeBackground2(e) {
+    e.target.style.background = "white";
+    e.target.style.color = "black";
+  }
+  // function changeText1(p) {
+  //   p.target.style.color = "#6237de";
+  // }
+  // function changeText2(p) {
+  //   p.target.style.color = "black";
+  // }
+
+  // const onMouseOut = (event) => {
+  //   const el = event.target;
+  //   let black = "#7AF377";
+  //   el.style.color = black;
+  // };
+  // const onMouseOver = (event) => {
+  //   const el = event.target;
+  //   let black = "#4AA086";
+  //   el.style.color = black;
+  // };
+
+  // var isSignup = config.extraParams && config.extraParams.action === "signup";
+
+  // var lock = new Auth0Lock(config.clientID, config.auth0Domain, {});
+  // initialScreen: isSignup ? "signUp" : "login";
   const { loginWithRedirect, isAuthenticated } = useAuth0();
+
+  // const [color, setColor] = useState("");
+  // const styles = {
+  //   color: color,
+  // };
   return (
     <>
       {!isAuthenticated && (
-        <div class="row g-3 d-none d-lg-block d-lg-flex flex-lg-row">
+        <div className="row g-3 d-none d-lg-block d-lg-flex flex-lg-row">
           <div className="col-lg-6">
-            <button
-              onClick={() => loginWithRedirect()}
-              type="button"
-              class="col-sm btn btn-outline-secondary"
+            <a
+              // onMouseOver={{style ={{color:"white"}}}}
+              // type="button"
+              style={{ fontFamily: "Satoshi", outline: "none" }}
+              className="col-sm text-primary btn btn-link text-decoration-none text-dark border-0 rounded-0"
+              href="https://main.d1r3myfmqkkt4h.amplifyapp.com/signup"
+
+              // style={({ fontFamily: "Satoshi" }, styles)}
+              // onMouseEnter={() => setColor("green")}
+              // onMouseLeave={() => setColor("")}
+              // onMouseEnter={(this.style.color = "#6237de")}
+              // onMouseLeave={(this.style.color = "black")}
+              // onMouseOver={changeText1}
+              // onMouseLeave={changeText2}
+              // onMouseEnter={(event) => onMouseOver(event)}
+              // onMouseOut={(event) => onMouseOut(event)}
             >
-              SignUp
-            </button>
+              Sign&nbsp;up
+            </a>
           </div>
           <div className="col-lg-6">
             <button
+              onMouseOver={changeBackground1}
+              onMouseLeave={changeBackground2}
               onClick={() => loginWithRedirect()}
+              style={{ fontFamily: "Satoshi" }}
               type="button"
-              class="col-sm btn btn-outline-secondary"
+              className="col-sm border-light btn  btn-outline   rounded-0 px-4 border-2 "
             >
-              SignIn
+              Sign&nbsp;in
             </button>
           </div>
         </div>
@@ -37,19 +89,23 @@ const LoginButton = () => {
             <img src={Avatar} alt="Avatar" classsName="img-fluid"></img>
           </div>
 
-          <div class="dropdown ">
+          <div className="dropdown ">
             <div
-              class="btn dropdown-toggle d-flex justify-content-center align-items-center"
+              className="btn dropdown-toggle d-flex justify-content-center align-items-center"
               data-bs-toggle="dropdown"
             ></div>
-            <ul class="dropdown-menu">
+            <ul className="dropdown-menu">
               <li>
-                <a class="dropdown-item" href="#">
+                <a className="dropdown-item" href="#">
                   Setting
                 </a>
               </li>
-              <li onClick={() => loginWithRedirect()}>
-                <a class="dropdown-item" href="#">
+              <li
+                onClick={() => {
+                  loginWithRedirect();
+                }}
+              >
+                <a className="dropdown-item" href="#">
                   LogIn
                 </a>
               </li>

@@ -15,7 +15,8 @@ import RedCross from "../../assets/CryptoProfilePage/RedCross.svg";
 import YellowNeutral from "../../assets/CryptoProfilePage/YellowNeutral.svg";
 import GraphF1MetricsScore from "../../assets/CryptoProfilePage/GraphF1MetricsScore.svg";
 import LineGraph from "../../assets/CryptoProfilePage/LineGraph.svg";
-import Disclaimer from "../../assets/CryptoProfilePage/Disclaimer.svg";
+// import Disclaimer from "../../assets/CryptoProfilePage/Disclaimer.svg";
+import Disclaimer from "../../components/Disclaimer";
 
 const CryptoProfilePage = () => {
   return (
@@ -23,12 +24,16 @@ const CryptoProfilePage = () => {
       <Header />
       <div className="container d-flex my-4 ">
         <div className="d-flex justify-content-center align-items-center pe-3">
-          <button type="button" class="btn ">
-            <img src={BackArrow} />
-          </button>
+          <div type="button" class="btn ">
+            <a href="/trendprediction">
+              <img src={BackArrow} />
+            </a>
+          </div>
         </div>
         <div className="d-flex justify-content-center align-items-center ">
-          <h3 className="m-0">Trend Prediction</h3>
+          <a className="text-decoration-none" href="/trendprediction">
+            <h3 className="m-0 text-dark ">Trend Prediction</h3>
+          </a>
         </div>
       </div>
       {/* Crypto Ticker Header */}
@@ -783,9 +788,10 @@ const CryptoProfilePage = () => {
 
       {/* Disclaimer */}
 
-      <div className="container mb-5 pb-5">
-        <img src={Disclaimer} className="img-fluid" />
-      </div>
+      {/* <div className="container mb-5 pb-5"> */}
+        {/* <img src={Disclaimer} className="img-fluid" /> */}
+        <Disclaimer />
+      {/* </div> */}
       {/* Disclaimer ^^^^ */}
 
       <Footer />

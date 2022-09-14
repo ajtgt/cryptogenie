@@ -1,5 +1,4 @@
 import React from "react";
-import { useHistory, Link } from "react-router-dom";
 
 import Bitcoin from "../assets/TrendPediction/Bitcoin.svg";
 import Tether from "../assets/TrendPediction/Tether.svg";

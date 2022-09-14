@@ -17,7 +17,7 @@ const PricingCardsM = ({ dataM }) => {
                 <div className="h3">{m.monthly}</div>
               </div>
               <div className="d-flex justify-content-center align-items-center mb-5">
-                <div>{m.yearly}</div>
+                <div className="mt-5">{m.yearly}</div>
               </div>
               <div className="d-flex justify-content-center align-items-center mb-5">
                 <img src={PricingCard1} />
