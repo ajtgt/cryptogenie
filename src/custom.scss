@@ -28,6 +28,17 @@
 //   "lightgreen": #51d9b8,
 // );
 
+.blur {
+  width: 100px;
+  color: transparent !important;
+  background: linear-gradient(
+    90deg,
+    #e3e9ee 16.67%,
+    #b7c3ce 48.79%,
+    #e9f0f7 82.46%
+  );
+}
+
 $theme-colors: (
   //   primary: $purple,
   "purple": #6237de,

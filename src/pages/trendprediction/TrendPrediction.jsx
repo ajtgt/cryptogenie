@@ -1,25 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import CoinInfoBlock from "../../components/CoinInfoBlock";
 import Disclaimer from "../../components/Disclaimer";
 
-import TrendDisclaimer from "../../assets/TrendPediction/TrendDisclaimer.svg";
-
 import Select from "react-select";
 
-import Bitcoin from "../../assets/TrendPediction/Bitcoin.svg";
-import Tether from "../../assets/TrendPediction/Tether.svg";
-import TetherBatch from "../../assets/TrendPediction/TetherBatch.svg";
-import Timer from "../../assets/TrendPediction/Timer.svg";
-import NextButton from "../../assets/TrendPediction/NextButton.svg";
-
-import { Pie, PieChart } from "recharts";
-
-// import Lottie from "lottie-react";
-// import Loader from "../../assets/Loader/Loader.json";
-// import { useLottie } from "lottie-react";
 import lottie from "lottie-web";
 
 import { useAuth0 } from "@auth0/auth0-react";
@@ -27,18 +14,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { pred } from "../../features/user/predSlice";
 import axios from "axios";
 
-// import Caution from "../../assets/TrendPediction/Caution.png";
-
 const TrendPrediction = () => {
   const [loading, setLoading] = useState(true);
 
-  const [preddata, setPredata] = useState(preddata1);
+  const [filteredCoins, setFilteredCoins] = useState([]);
 
-  const preddata1 = useSelector((state) => state.pred.pred);
+  const [coinsData, setCoinsData] = useState([]);
 
-  console.log("preddata" + preddata);
+  let [trigger, setTrigger] = useState(false);
 
-  // let [threshold, setThreshold] = useState(false);
+  const coinsDataAr = useSelector((state) => {
+    if (state && state.pred && state.pred.pred && state.pred.pred.data) {
+      // console.log("state", state);
+      return state.pred.pred.data.data.payload;
+    }
+    return [];
+  });
+
+  const thresholdindicator = useSelector((state) => state.threshold.threshold);
+
+  /*  console.log("coinsDataAr" + coinsDataAr); */
 
   const { isAuthenticated } = useAuth0();
 
@@ -46,8 +41,8 @@ const TrendPrediction = () => {
 
   // Fetching token Data from Store
   const token = useSelector((state) => state.user.token);
-  const threshold = useSelector((state) => state.user.threshold);
-  // console.log("Token state", token);
+
+  console.log("thresholdindicator", thresholdindicator);
 
   const currentTimeStamp = new Date().toISOString().split(".")[0] + "Z";
 
@@ -56,6 +51,7 @@ const TrendPrediction = () => {
   //Fetching Prediction Data From API
 
   let url;
+
   if (!isAuthenticated) {
     url = `https://rx03iubpad.execute-api.us-east-2.amazonaws.com/test/v1/sample_predictions?ts=${currentTimeStamp}`;
   } else {
@@ -74,64 +70,78 @@ const TrendPrediction = () => {
   async function fetchPredData() {
     const response = await axios.get(url, config);
 
+    /*     setData((data) => {
+      if (data) {
+        return data.data.payload;
+      }
+      return [];
+    }); */
+    setCoinsData(response?.data?.data?.payload); /* Working */
+
     dispatch(pred(response));
 
-    setLoading(false);
+    /* setLoading(false); */
   }
 
   useEffect(() => {
     fetchPredData();
   }, []);
 
+  console.log("setCoinsData", coinsData);
+
+  useEffect(() => {
+    setTrigger(thresholdindicator);
+  }, [thresholdindicator]);
+
   useEffect(() => {
     let interval;
-    if (threshold === true) {
+    if (trigger === true) {
+      setLoading(true);
       interval = setTimeout(() => {
-        /* console.log("Query Status is 0");
-        console.log(data?.query_statusCode); */
-        // setTimerThresholdReached(false);
-        fetchPredData();
-        setLoading(true);
-      }, 3.5 * 60 * 1000);
+        // console.log("Query Status is 0");
+        console.log("OOOOOOOh Yes");
+        setLoading(false);
+      }, 60 * 1000);
     } else {
       fetchPredData();
+      console.log("NoNoNoNoNoNoNoNoNo");
       setLoading(false);
     }
 
     return clearInterval(interval);
-  }, [threshold]);
+  }, [trigger]);
 
   // Logic 1
   /* useEffect(() => {
-    let interval;
-    const fetchPredData = async () => {
-      const response = await axios.get(url, config);
-      const data = response.data;
-      const query = data?.query_statusCode;
-      // setLoading(false);
-
-      if (query === 0) {
-        interval = setTimeout(() => {
-          console.log("Query Status is 0");
-          console.log(data?.query_statusCode);
-          // setTimerThresholdReached(false);
-          fetchPredData();
-          setLoading(true);
-        }, 100 * 1000);
-      } else if (query === 1) {
-        console.log("Query status is 1 wohoo");
-        dispatch(pred(response));
-        clearInterval(interval);
-
-        setLoading(false);
-      }
-    };
-
-    fetchPredData();
-
-    return () => clearInterval(interval);
-  }, []);
- */
+   let interval;
+   const fetchPredData = async () => {
+     const response = await axios.get(url, config);
+     const data = response.data;
+     const query = data?.query_statusCode;
+     // setLoading(false);
+ 
+     if (query === 0) {
+       interval = setTimeout(() => {
+         console.log("Query Status is 0");
+         console.log(data?.query_statusCode);
+         // setTimerThresholdReached(false);
+         fetchPredData();
+         setLoading(true);
+       }, 100 * 1000);
+     } else if (query === 1) {
+       console.log("Query status is 1 wohoo");
+       dispatch(pred(response));
+       clearInterval(interval);
+ 
+       setLoading(false);
+     }
+   };
+ 
+   fetchPredData();
+ 
+   return () => clearInterval(interval);
+ }, []);
+*/
   // let interval;
 
   // if (preddata?.data?.query_statusCode === "1") {
@@ -203,38 +213,33 @@ const TrendPrediction = () => {
   // let x ;
   // if()
 
-  const coins = [
-    {
-      label: "ETH",
-      value: "ETH",
-    },
-    {
-      label: "BTC",
-      value: "BTC",
-    },
-    {
-      label: "BNB",
-      value: "BNB",
-    },
-    {
-      label: "DOT",
-      value: "DOT",
-    },
-    {
-      label: "ADA",
-      value: "ADA",
-    },
-    {
-      label: "ATOM",
-      value: "ATOM",
-    },
-  ];
+  // Main Map Function
+  /*   const coins = coinsDataAr.map((data) => ({
+    label: `${data.base_asset}/${data.quote_asset}`,
+    value: data.asset,
+    data,
+  })); */
+  const coins = coinsDataAr.map((data) => ({
+    label: `${data.base_asset}`,
+    value: data.asset,
+    data,
+  }));
+
+  // const coins = coinsDataAr.map((data) => ({
+  //   cat: data.asset,
+  //   key: `${data.base_asset}`,
+  //   data,
+  // }));
+
+  /*  console.log("coins" + coins); */
+
+  /* const filter = useMemo(() => changeFunction(filteredCoins), [filteredCoins]); */
 
   function changeFunction(coinsdata) {
-    const updateddata = preddata.filter((x) => {
-      console.log("updateddta + " + preddata);
-    });
+    setFilteredCoins(coinsdata);
   }
+
+  // console.log("filtereCoins", filteredCoins);
 
   // const changeFunction = (coinsdata) => {};
 
@@ -245,13 +250,6 @@ const TrendPrediction = () => {
   return (
     <div>
       <Header />
-      {/* {threshold && (
-        <>
-          <div className="d-flex justify-content-center align-items-center vh-100 ">
-            <div className="" style={{ width: 250, height: 250 }} id="lottie" />
-          </div>
-        </>
-      )} */}
 
       {loading && (
         <>
@@ -260,69 +258,53 @@ const TrendPrediction = () => {
           </div>
         </>
       )}
-      {/* {loading && (
-        <>
-          <div className="d-flex justify-content-center align-items-center ">
-            <div className="" style={{ width: 250, height: 250 }} id="lottie" />
-          </div>
-        </>
-      )} */}
-      {/* {res === false && (
-        <div className="d-flex justify-content-center align-items-center vh-100">
-          <div className="" style={{ width: 250, height: 250 }} id="lottie" />
-        </div>
-      )} */}
-      {/* {loading ? (
-        <>
-          <div className="d-flex justify-content-center align-items-center vh-100">
-            <div className="" style={{ width: 250, height: 250 }} id="lottie" />
-          </div>
-        </>
-      ) : ( */}
+
       {!loading && (
         <>
           <div className="container d-flex justify-content-between  my-4">
             <div className="h3">Trend Prediction</div>
-            <div className="col-lg-4">
+            <div className="col-lg-4 ">
               <Select
                 closeMenuOnSelect={false}
-                className="fw-bold text-dark"
+                className="fw-bold text-dark "
                 options={coins}
                 isMulti={true}
-                // onClick={() => changeFunction()}
                 id="filterCoin"
                 onChange={changeFunction}
                 placeholder="Filter by Coin"
               />
             </div>
+            {/* <Multiselect
+              displayValue="key"
+              // onKeyPressFn={function noRefCheck() {}}
+              // onRemove={function noRefCheck() {}}
+              // onSearch={function noRefCheck() {}}
+              // onSelect={function noRefCheck() {}}
+              onChange={changeFunction}
+              options={coins}
+              showCheckbox
+            /> */}
           </div>
 
-          <CoinInfoBlock
-            datafromparent={preddata?.data?.data?.payload[0]}
-            // trend={preddata?.data?.data?.payload[0]}
-          />
-          <CoinInfoBlock datafromparent={preddata?.data?.data?.payload[1]} />
-
-          <CoinInfoBlock datafromparent={preddata?.data?.data?.payload[2]} />
-
-          <CoinInfoBlock datafromparent={preddata?.data?.data?.payload[3]} />
-
-          <CoinInfoBlock datafromparent={preddata?.data?.data?.payload[4]} />
-
-          <CoinInfoBlock datafromparent={preddata?.data?.data?.payload[5]} />
-
-          <CoinInfoBlock datafromparent={preddata?.data?.data?.payload[6]} />
-
-          <CoinInfoBlock datafromparent={preddata?.data?.data?.payload[7]} />
-
-          <CoinInfoBlock datafromparent={preddata?.data?.data?.payload[8]} />
-
-          <CoinInfoBlock datafromparent={preddata?.data?.data?.payload[9]} />
+          {filteredCoins.length === 0
+            ? coins.map((curr) => (
+                <CoinInfoBlock
+                  key={`filterredCoins_${curr.cat}`}
+                  datafromparent={curr.data}
+                  // trend={preddata?.data?.data?.payload[0]}
+                />
+              ))
+            : filteredCoins.map((curr) => (
+                <CoinInfoBlock
+                  key={`filterredCoins_${curr.cat}`}
+                  datafromparent={curr.data}
+                  // trend={preddata?.data?.data?.payload[0]}
+                />
+              ))}
 
           <Disclaimer />
         </>
       )}
-      {/* )} */}
       <Footer />
     </div>
   );

@@ -33,7 +33,7 @@ const App = () => {
   return (
     <div>
       <Switch>
-        <Route exact path="/">
+        <Route exact path="/home">
           <LandingPage />
         </Route>
 
@@ -49,9 +49,9 @@ const App = () => {
         <Route exact path="/settingpage">
           <SettingPage />
         </Route>
-        <Route exact path="/mainpagecryptogenie">
+        {/* <Route exact path="/mainpagecryptogenie">
           <MainPageCryptoGenie />
-        </Route>
+        </Route> */}
         <Route exact path="/yantraka">
           <Yantraka />
         </Route>

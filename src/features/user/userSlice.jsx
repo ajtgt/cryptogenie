@@ -16,6 +16,7 @@ export const userSlice = createSlice({
       // state.token = action.payload.__raw;
       // console.log("Token in userSlice", action.payload?.__raw);
       state.token = action.payload?.__raw;
+      /* console.log("Token in userSlice", state.token); */
     },
     logout: (state) => {
       state.token = "";

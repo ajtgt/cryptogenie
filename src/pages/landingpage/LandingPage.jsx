@@ -138,7 +138,7 @@ const LandingPage = () => {
       {!loading && (
         <>
           {/* Machine Row Container  */}
-          <div className="container mb-5">
+          <div className="container mb-5" id="home">
             <div className="row m-0 my-5">
               {/* Machine Column */}
               <div className="col-sm-6 col-12 px-0 order-xs-2 order-sm-1">
@@ -340,10 +340,7 @@ const LandingPage = () => {
           {/* Features ^^^^ */}
 
           {/* How It Works Start */}
-          <div
-            id="features"
-            className="container mt-5 pt-5 d-none d-sm-block d-md-none"
-          >
+          <div className="container mt-5 pt-5 d-none d-sm-block d-md-none">
             <div className="row h2 mb-5">
               <div className="col-12 col-sm-12">How It Works</div>
             </div>

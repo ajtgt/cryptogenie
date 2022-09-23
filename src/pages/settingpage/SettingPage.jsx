@@ -21,6 +21,8 @@ const SettingPage = () => {
   const token = useSelector((state) => state.user.token);
   const [loading, setLoading] = useState(true);
 
+  /*   console.log("Token in Setting Page", token); */
+
   const config = {
     headers: {
       Authorization: token,
@@ -281,9 +283,9 @@ const SettingPage = () => {
                           <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
                               <div class="fw-bold">
-                                {/* {cust.data?.customer_history[0].date} */}
+                                {cust.data?.customer_history[0].date}
                               </div>
-                              {/* {cust.data?.customer_history[0].event} */}
+                              {cust.data?.customer_history[0].event}
                             </div>
                           </li>
                         </ol>

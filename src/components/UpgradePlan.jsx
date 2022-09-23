@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from "react";
 import PricingCards from "./PricingCards";
+import PricingCard from "./PricingCard";
 import monthlyData from "../pages/settingpage/monthlyData.json";
 import annualData from "../pages/settingpage/annualData.json";
 
@@ -51,9 +52,13 @@ const UpgradePlan = () => {
 
         <div class="tab-content">
           <div id="monthly" class="d-flex flex-row container tab-pane active">
-            <PricingCards data={monthlyData[0]} user={user[1]?.prices[0]?.id} />
+            {/* <PricingCards data={monthlyData[0]} user={user[1]?.prices[0]?.id} />
             <PricingCards data={monthlyData[1]} user={user[2]?.prices[0]?.id} />
             <PricingCards data={monthlyData[2]} user={user[1]?.prices[0]?.id} />
+            <PricingCards data={monthlyData[3]} user={user[2]?.prices[0]?.id} /> */}
+            <PricingCard data={monthlyData[0]} user={user[1]?.prices[0]?.id} />
+            <PricingCard data={monthlyData[1]} user={user[2]?.prices[0]?.id} />
+            <PricingCard data={monthlyData[2]} user={user[1]?.prices[0]?.id} />
             <PricingCards data={monthlyData[3]} user={user[2]?.prices[0]?.id} />
           </div>
           <div id="annual" class="d-flex flex-row container tab-pane fade">

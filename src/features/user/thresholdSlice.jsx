@@ -1,17 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = {
+  threshold: false,
+};
 export const thresholdSlice = createSlice({
   name: "threshold",
-  initialState: {
-    threshold: false,
-  },
+  initialState,
   reducers: {
-    thbreshold: (state, action) => {
+    setThreshold: (state, action) => {
       state.threshold = action.payload;
+      // state.threshold = !state.threshold;
+      
     },
   },
 });
 
-export const { threshold } = thresholdSlice.actions;
+export const { setThreshold } = thresholdSlice.actions;
 
 export default thresholdSlice.reducer;

@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import { Pie, PieChart } from "recharts";
+
+import blur from "../custom.scss";
 
 // import { pred } from "../../features/user/predSlice";
 // import { threshold } from "../../features/user/thresholdSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { threshold } from "../features/user/thresholdSlice";
+import { setThreshold } from "../features/user/thresholdSlice";
 
 import Select from "react-select";
 
@@ -14,18 +16,48 @@ import Uncertain from "../assets/TrendPediction/Uncertain.svg";
 import Ranging from "../assets/TrendPediction/Ranging.svg";
 import PredictionCard from "../../src/assets/TrendPediction/PredictionCard.svg";
 import NextButton from "../../src/assets/TrendPediction/NextButton.svg";
+import Next from "../../src/assets/TrendPediction/Next.svg";
+
+import CountDown from "../components/CountDown";
+import Timer from "../components/Timer";
+import Timer1 from "../components/Timer";
+
+import Timez from "../components/Timez";
 
 const CoinInfoBlock = (props) => {
   // Display  Minutes and Seconds using JavaScript
 
-  let today = new Date();
+  // let today = new Date();
+  const threshold = useSelector((state) => state.threshold.threshold);
+
+  // console.log("CIB", props?.datafromparent);
+
+  // console.log(
+  //   "CoinInfoProps",
+  //   `calc(100 * (${
+  //     props?.datafromparent?.metrics?.correct_predictions /
+  //     props?.datafromparent?.metrics?.predicted_rows
+  //   }))`
+  // );
+
+  // console.log("threshold1", threshold);
+  // useEffect(
+  //   (threshold) => {
+  //     setThreshold();
+  //   },
+  //   [threshold]
+  // );
 
   // var currenttime = today.getMinutes() + ":" + today.getSeconds();
-  let currenttime = today.getMinutes() + ":" + today.getSeconds();
+  /*   let currenttime = today.getMinutes() + ":" + today.getSeconds();
   let currentmin = today.getMinutes();
-  let currentsec = today.getSeconds();
+  let currentsec = today.getSeconds(); */
+  // let currtime = today.getTime();
+  // console.log("currtime = " + currentsec);
 
-  let startingmin;
+  // console.log("BlockData   " + props?.datafromparent);
+
+  /*   let startingmin;
   let startingsec;
 
   if (currentmin > 30) {
@@ -39,7 +71,7 @@ const CoinInfoBlock = (props) => {
   let initialSeconds = startingsec;
 
   const [minutes, setMinutes] = useState(initialMinute);
-  const [seconds, setSeconds] = useState(initialSeconds);
+  const [seconds, setSeconds] = useState(initialSeconds); */
   // const [threshold, setThreshold] = useState(false);
   // console.log("Child-Data Base", props);
   // console.log("Child-Data Quote", props?.datafromparent);
@@ -132,48 +164,26 @@ const CoinInfoBlock = (props) => {
 
   // New timer
 
-  // let initialMinute = startingmin;
-  // let initialSeconds = startingsec;
-  const dispatch = useDispatch();
-
-  function Threshold() {
-    if (minutes == 0 && seconds == 0) {
-      // setThreshold = true;
-      dispatch(threshold(true));
-    }
-  }
-
-  useEffect(() => {
-    Threshold();
-  });
-
-  useEffect(() => {
-    let myInterval = setInterval(() => {
-      if (seconds > 0) {
-        setSeconds(seconds - 1);
-      }
-      if (seconds === 0) {
-        if (minutes === 0) {
-          clearInterval(myInterval);
-        } else {
-          setMinutes(minutes - 1);
-          setSeconds(59);
-        }
-      }
-    }, 1000);
-    return () => {
-      clearInterval(myInterval);
-    };
-  });
-
   return (
     <div className="Coins p-3">
+      {/*       <button
+        type="button"
+        class="btn btn-primary"
+        // onClick={() => {
+        //   dispatch(threshold());
+        // }}
+        onClick={() => {
+          dispatch(setThreshold(!threshold));
+        }}
+      >
+        Primary
+      </button> */}
       <div className="px-3 py-5 bg-light">
         {/* Ticker Header */}
+
         <div className="d-lg-flex justify-content-lg-between mb-3">
           <div className="LeftSide d-lg-flex justify-content-lg-start">
             {/* First Coin  */}
-
             {props?.datafromparent?.base_asset === "BTC" &&
             props?.datafromparent?.quote_asset === "USDT" ? (
               <div className="LeftSide  d-lg-flex justify-content-lg-center">
@@ -206,6 +216,7 @@ const CoinInfoBlock = (props) => {
                     <h3>Tether</h3>
                   </div>
                 </div>
+
                 <div className="d-lg-flex bg-white justify-content-lg-cenetr align-items-lg-cenetr p-3">
                   <div style={{ color: "#6237de" }}>
                     {props?.datafromparent?.asset}
@@ -213,6 +224,7 @@ const CoinInfoBlock = (props) => {
                 </div>
               </div>
             ) : /* Second Coin */
+
             props?.datafromparent?.base_asset === "ETH" &&
               props?.datafromparent?.quote_asset === "USDT" ? (
               <div className="LeftSide  d-lg-flex justify-content-lg-center">
@@ -252,6 +264,7 @@ const CoinInfoBlock = (props) => {
                 </div>
               </div>
             ) : /* Third Coin */
+
             props?.datafromparent?.base_asset === "BNB" &&
               props?.datafromparent?.quote_asset === "USDT" ? (
               <div className="LeftSide  d-lg-flex justify-content-lg-center">
@@ -266,7 +279,7 @@ const CoinInfoBlock = (props) => {
                     ></img>
                   </div>
                   <div>
-                    <h3>Bitcoin</h3>
+                    <h3>Binance</h3>
                   </div>
                 </div>
 
@@ -291,6 +304,7 @@ const CoinInfoBlock = (props) => {
                 </div>
               </div>
             ) : /* Fourth Coin */
+
             props?.datafromparent?.base_asset === "DOT" &&
               props?.datafromparent?.quote_asset === "USDT" ? (
               <div className="LeftSide  d-lg-flex justify-content-lg-center">
@@ -368,50 +382,204 @@ const CoinInfoBlock = (props) => {
                   </div>
                 </div>
               </div>
-            ) : (
-              <div className="Ticker2 d-lg-flex justify-content-center">
-                <div className="me-3">
-                  <img
-                    src={
-                      "https://assets-cryptogenie.yantraka.ai/v1/coins/usdt.svg"
-                    }
-                    height="35px"
-                    width="35px"
-                  ></img>
+            ) : /* Sixth Coin */
+            props?.datafromparent?.base_asset === "ATOM" &&
+              props?.datafromparent?.quote_asset === "USDT" ? (
+              <div className="LeftSide  d-lg-flex justify-content-lg-center">
+                <div className="Ticker1 d-lg-flex justify-content-center me-3">
+                  <div className="me-3">
+                    <img
+                      src={
+                        "https://assets-cryptogenie.yantraka.ai/v1/coins/atom.svg"
+                      }
+                      height="35px"
+                      width="35px"
+                    ></img>
+                  </div>
+                  <div>
+                    <h3>ATOM</h3>
+                  </div>
                 </div>
-                <div>
-                  <h3>Tether</h3>
+
+                <div className="Ticker2 d-lg-flex justify-content-center me-3">
+                  <div className="me-3">
+                    <img
+                      src={
+                        "https://assets-cryptogenie.yantraka.ai/v1/coins/usdt.svg"
+                      }
+                      height="35px"
+                      width="35px"
+                    ></img>
+                  </div>
+                  <div>
+                    <h3>Tether</h3>
+                  </div>
+                </div>
+                <div className="d-lg-flex bg-white justify-content-lg-cenetr align-items-lg-cenetr p-3">
+                  <div style={{ color: "#6237de" }}>
+                    {props?.datafromparent?.asset}
+                  </div>
+                </div>
+              </div>
+            ) : /* Seventh Coin */
+            props?.datafromparent?.base_asset === "BTC" &&
+              props?.datafromparent?.quote_asset === "USDT" ? (
+              <div className="LeftSide  d-lg-flex justify-content-lg-center">
+                <div className="Ticker1 d-lg-flex justify-content-center me-3">
+                  <div className="me-3">
+                    <img
+                      src={
+                        "https://assets-cryptogenie.yantraka.ai/v1/coins/btc.svg"
+                      }
+                      height="35px"
+                      width="35px"
+                    ></img>
+                  </div>
+                  <div>
+                    <h3>Bitcoin</h3>
+                  </div>
+                </div>
+
+                <div className="Ticker2 d-lg-flex justify-content-center me-3">
+                  <div className="me-3">
+                    <img
+                      src={
+                        "https://assets-cryptogenie.yantraka.ai/v1/coins/usdt.svg"
+                      }
+                      height="35px"
+                      width="35px"
+                    ></img>
+                  </div>
+                  <div>
+                    <h3>Tether</h3>
+                  </div>
+                </div>
+                <div className="d-lg-flex bg-white justify-content-lg-cenetr align-items-lg-cenetr p-3">
+                  <div style={{ color: "#6237de" }}>
+                    {props?.datafromparent?.asset}
+                  </div>
+                </div>
+              </div>
+            ) : // Eigth Coin
+            props?.datafromparent?.base_asset === "ETH" &&
+              props?.datafromparent?.quote_asset === "USDC" ? (
+              <div className="LeftSide  d-lg-flex justify-content-lg-center">
+                <div className="Ticker1 d-lg-flex justify-content-center me-3">
+                  <div className="me-3">
+                    <img
+                      src={
+                        "https://assets-cryptogenie.yantraka.ai/v1/coins/eth.svg"
+                      }
+                      height="35px"
+                      width="35px"
+                    ></img>
+                  </div>
+                  <div>
+                    <h3>Etherium</h3>
+                  </div>
+                </div>
+
+                <div className="Ticker2 d-lg-flex justify-content-center me-3">
+                  <div className="me-3">
+                    <img
+                      src={
+                        "https://assets-cryptogenie.yantraka.ai/v1/coins/usdc.svg"
+                      }
+                      height="35px"
+                      width="35px"
+                    ></img>
+                  </div>
+                  <div>
+                    <h3>USD Coin</h3>
+                  </div>
+                </div>
+                <div className="d-lg-flex bg-white justify-content-lg-cenetr align-items-lg-cenetr p-3">
+                  <div style={{ color: "#6237de" }}>
+                    {props?.datafromparent?.asset}
+                  </div>
+                </div>
+              </div>
+            ) : // Ninth Coin
+            props?.datafromparent?.base_asset === "BNB" &&
+              props?.datafromparent?.quote_asset === "USDC" ? (
+              <div className="LeftSide  d-lg-flex justify-content-lg-center">
+                <div className="Ticker1 d-lg-flex justify-content-center me-3">
+                  <div className="me-3">
+                    <img
+                      src={
+                        "https://assets-cryptogenie.yantraka.ai/v1/coins/bnb.svg"
+                      }
+                      height="35px"
+                      width="35px"
+                    ></img>
+                  </div>
+                  <div>
+                    <h3>Binance</h3>
+                  </div>
+                </div>
+
+                <div className="Ticker2 d-lg-flex justify-content-center me-3">
+                  <div className="me-3">
+                    <img
+                      src={
+                        "https://assets-cryptogenie.yantraka.ai/v1/coins/usdc.svg"
+                      }
+                      height="35px"
+                      width="35px"
+                    ></img>
+                  </div>
+                  <div>
+                    <h3>USD Coin</h3>
+                  </div>
+                </div>
+                <div className="d-lg-flex bg-white justify-content-lg-cenetr align-items-lg-cenetr p-3">
+                  <div style={{ color: "#6237de" }}>
+                    {props?.datafromparent?.asset}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              /* Tenth Coin */
+
+              <div className="LeftSide  d-lg-flex justify-content-lg-center">
+                <div className="Ticker1 d-lg-flex justify-content-center me-3">
+                  <div className="me-3">
+                    <img
+                      src={
+                        "https://assets-cryptogenie.yantraka.ai/v1/coins/bnb.svg"
+                      }
+                      height="35px"
+                      width="35px"
+                    ></img>
+                  </div>
+                  <div>
+                    <h3>Binance</h3>
+                  </div>
+                </div>
+
+                <div className="Ticker2 d-lg-flex justify-content-center me-3">
+                  <div className="me-3">
+                    <img
+                      src={
+                        "https://assets-cryptogenie.yantraka.ai/v1/coins/usdc.svg"
+                      }
+                      height="35px"
+                      width="35px"
+                    ></img>
+                  </div>
+                  <div>
+                    <h3>USD Coin</h3>
+                  </div>
+                </div>
+                <div className="d-lg-flex bg-white justify-content-lg-cenetr align-items-lg-cenetr p-3">
+                  <div style={{ color: "#6237de" }}>
+                    {props?.datafromparent?.asset}
+                  </div>
                 </div>
               </div>
             )}
 
-            {/* <img
-                src={"	https://assets-cryptogenie.yantraka.ai/v1/coins/usdt.svg"}
-                alt={Tether}
-              ></img>
-              <img
-                src={"	https://assets-cryptogenie.yantraka.ai/v1/coins/eth.svg"}
-                alt={Etherium}
-              ></img>
-              <img
-                src={"	https://assets-cryptogenie.yantraka.ai/v1/coins/dot.svg"}
-                alt={Polkadot}
-              ></img>
-              <img
-                src={"https://assets-cryptogenie.yantraka.ai/v1/coins/ada.svg"}
-                alt={Cardona}
-              ></img>
-              <img
-                src={"https://assets-cryptogenie.yantraka.ai/v1/coins/atom.svg"}
-                alt={Atom}
-              ></img>
-              <img
-                src={"	https://assets-cryptogenie.yantraka.ai/v1/coins/usdc.svg"}
-                alt={USDCoin}
-              ></img> */}
-
             <div className="Ticker1"></div>
-
             <div classname="TickerName"></div>
           </div>
           <div className="RightSide d-lg-flex justify-content-lg-center">
@@ -433,11 +601,14 @@ const CoinInfoBlock = (props) => {
               <div className="d-lg-flex  justify-content-lg-cenetr align-items-lg-start me-3">
                 {/* <div id="countdown"></div> */}
                 <div>
-                  {minutes === 0 && seconds === 0 ? null : (
+                  {/* {minutes === 0 && seconds === 0 ? null : (
                     <b style={{ color: "#6237de" }}>
                       {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
                     </b>
-                  )}
+                  )} */}
+                  <CountDown />
+                  {/* <Timer1 /> */}
+                  {/*  <Timez /> */}
                 </div>
               </div>
             </div>
@@ -461,8 +632,30 @@ const CoinInfoBlock = (props) => {
           </div>
           {/* Charts */}
           <div className="d-lg-flex flex-lg-column">
-            <div>Correct Predictions: 262 / 542</div>
-            <div>==================</div>
+            <div>
+              Correct Predictions:
+              <span style={{ color: " #6237de" }}>262</span> / 542
+            </div>
+            {/* <div>==================</div> */}
+            <div class="progress">
+              <div
+                class="progress-bar progress-bar "
+                role="progressbar"
+                // aria-valuenow={
+                //   (100 * props?.datafromparent?.metrics?.correct_predictions) /
+                //   props?.datafromparent?.metrics?.predicted_rows
+                // }
+                aria-valuenow={0}
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style={{
+                  width: `${
+                    props?.datafromparent?.metrics?.accuracy?.toFixed(2) * 100
+                  }%`,
+                  backgroundColor: "#6237DE",
+                }}
+              ></div>
+            </div>
           </div>
           <div className="d-lg-flex flex-lg-row">
             <div className="d-lg-row flex-lg-column">
@@ -565,14 +758,7 @@ const CoinInfoBlock = (props) => {
               <div style={{ fontSize: "0.8rem" }}>
                 <b>Prediction Capacity</b>
               </div>
-              <div className="" style={{ color: " #6237de" }}>
-                <b>
-                  {props?.datafromparent?.metrics?.prediction_capacity?.toFixed(
-                    4
-                  ) * 100}
-                  %
-                </b>
-              </div>
+              <div className="blur">NA</div>
             </div>
             <div className="d-lg-flex justify-content-lg-center align-items-lg-center">
               <PieChart width={40} height={40}>
@@ -592,14 +778,15 @@ const CoinInfoBlock = (props) => {
               <div style={{ fontSize: "0.8rem" }}>
                 <b>Tradable Capacity</b>
               </div>
-              <div className="" style={{ color: " #6237de" }}>
+              {/* <div className="" style={{ color: " #6237de" }}>
                 <b>
                   {props?.datafromparent?.metrics?.tradable_capacity?.toFixed(
                     2
                   ) * 100}
                   %
                 </b>
-              </div>
+              </div> */}
+              <div className="blur">NA</div>
             </div>
             <div className="d-lg-flex justify-content-lg-center align-items-lg-center">
               <PieChart width={40} height={40}>
@@ -614,12 +801,693 @@ const CoinInfoBlock = (props) => {
               </PieChart>
             </div>
           </div>
+
+          {/* Next Modal */}
+          <div
+            type="button"
+            className="d-lg-flex flex-lg-row btn"
+            data-bs-toggle="modal"
+            data-bs-target="#NextModal"
+          >
+            <img src={Next} alt="Next" height="40px" width="40px" />
+          </div>
+          <div
+            className="modal fade "
+            id="NextModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header bg-light">
+                  <div className="LeftSide d-lg-flex justify-content-lg-start">
+                    {/* First Coin  */}
+                    {props?.datafromparent?.base_asset === "BTC" &&
+                    props?.datafromparent?.quote_asset === "USDT" ? (
+                      <div className="LeftSide  d-lg-flex justify-content-lg-center">
+                        <div className="Ticker1 d-lg-flex justify-content-center me-3">
+                          <div className="me-3">
+                            <img
+                              src={
+                                "https://assets-cryptogenie.yantraka.ai/v1/coins/btc.svg"
+                              }
+                              height="35px"
+                              width="35px"
+                            ></img>
+                          </div>
+                          <div>
+                            <h3>Bitcoin</h3>
+                          </div>
+                        </div>
+
+                        <div className="Ticker2 d-lg-flex justify-content-center me-3">
+                          <div className="me-3">
+                            <img
+                              src={
+                                "https://assets-cryptogenie.yantraka.ai/v1/coins/usdt.svg"
+                              }
+                              height="35px"
+                              width="35px"
+                            ></img>
+                          </div>
+                          <div>
+                            <h3>Tether</h3>
+                          </div>
+                        </div>
+
+                        <div className="d-lg-flex bg-white justify-content-lg-cenetr align-items-lg-cenetr p-3">
+                          <div style={{ color: "#6237de" }}>
+                            {props?.datafromparent?.asset}
+                          </div>
+                        </div>
+                      </div>
+                    ) : /* Second Coin */
+
+                    props?.datafromparent?.base_asset === "ETH" &&
+                      props?.datafromparent?.quote_asset === "USDT" ? (
+                      <div className="LeftSide  d-lg-flex justify-content-lg-center">
+                        <div className="Ticker1 d-lg-flex justify-content-center me-3">
+                          <div className="me-3">
+                            <img
+                              src={
+                                "https://assets-cryptogenie.yantraka.ai/v1/coins/eth.svg"
+                              }
+                              height="35px"
+                              width="35px"
+                            ></img>
+                          </div>
+                          <div>
+                            <h3>Etherium</h3>
+                          </div>
+                        </div>
+
+                        <div className="Ticker2 d-lg-flex justify-content-center me-3">
+                          <div className="me-3">
+                            <img
+                              src={
+                                "https://assets-cryptogenie.yantraka.ai/v1/coins/usdt.svg"
+                              }
+                              height="35px"
+                              width="35px"
+                            ></img>
+                          </div>
+                          <div>
+                            <h3>Tether</h3>
+                          </div>
+                        </div>
+                        <div className="d-lg-flex bg-white justify-content-lg-cenetr align-items-lg-cenetr p-3">
+                          <div style={{ color: "#6237de" }}>
+                            {props?.datafromparent?.asset}
+                          </div>
+                        </div>
+                      </div>
+                    ) : /* Third Coin */
+
+                    props?.datafromparent?.base_asset === "BNB" &&
+                      props?.datafromparent?.quote_asset === "USDT" ? (
+                      <div className="LeftSide  d-lg-flex justify-content-lg-center">
+                        <div className="Ticker1 d-lg-flex justify-content-center me-3">
+                          <div className="me-3">
+                            <img
+                              src={
+                                "https://assets-cryptogenie.yantraka.ai/v1/coins/bnb.svg"
+                              }
+                              height="35px"
+                              width="35px"
+                            ></img>
+                          </div>
+                          <div>
+                            <h3>Binance</h3>
+                          </div>
+                        </div>
+
+                        <div className="Ticker2 d-lg-flex justify-content-center me-3">
+                          <div className="me-3">
+                            <img
+                              src={
+                                "https://assets-cryptogenie.yantraka.ai/v1/coins/usdt.svg"
+                              }
+                              height="35px"
+                              width="35px"
+                            ></img>
+                          </div>
+                          <div>
+                            <h3>Tether</h3>
+                          </div>
+                        </div>
+                        <div className="d-lg-flex bg-white justify-content-lg-cenetr align-items-lg-cenetr p-3">
+                          <div style={{ color: "#6237de" }}>
+                            {props?.datafromparent?.asset}
+                          </div>
+                        </div>
+                      </div>
+                    ) : /* Fourth Coin */
+
+                    props?.datafromparent?.base_asset === "DOT" &&
+                      props?.datafromparent?.quote_asset === "USDT" ? (
+                      <div className="LeftSide  d-lg-flex justify-content-lg-center">
+                        <div className="Ticker1 d-lg-flex justify-content-center me-3">
+                          <div className="me-3">
+                            <img
+                              src={
+                                "https://assets-cryptogenie.yantraka.ai/v1/coins/dot.svg"
+                              }
+                              height="35px"
+                              width="35px"
+                            ></img>
+                          </div>
+                          <div>
+                            <h3>Polkadot</h3>
+                          </div>
+                        </div>
+
+                        <div className="Ticker2 d-lg-flex justify-content-center me-3">
+                          <div className="me-3">
+                            <img
+                              src={
+                                "https://assets-cryptogenie.yantraka.ai/v1/coins/usdt.svg"
+                              }
+                              height="35px"
+                              width="35px"
+                            ></img>
+                          </div>
+                          <div>
+                            <h3>Tether</h3>
+                          </div>
+                        </div>
+                        <div className="d-lg-flex bg-white justify-content-lg-cenetr align-items-lg-cenetr p-3">
+                          <div style={{ color: "#6237de" }}>
+                            {props?.datafromparent?.asset}
+                          </div>
+                        </div>
+                      </div>
+                    ) : /* Fifth Coin */
+                    props?.datafromparent?.base_asset === "ADA" &&
+                      props?.datafromparent?.quote_asset === "USDT" ? (
+                      <div className="LeftSide  d-lg-flex justify-content-lg-center">
+                        <div className="Ticker1 d-lg-flex justify-content-center me-3">
+                          <div className="me-3">
+                            <img
+                              src={
+                                "https://assets-cryptogenie.yantraka.ai/v1/coins/ada.svg"
+                              }
+                              height="35px"
+                              width="35px"
+                            ></img>
+                          </div>
+                          <div>
+                            <h3>Cardano</h3>
+                          </div>
+                        </div>
+
+                        <div className="Ticker2 d-lg-flex justify-content-center me-3">
+                          <div className="me-3">
+                            <img
+                              src={
+                                "https://assets-cryptogenie.yantraka.ai/v1/coins/usdt.svg"
+                              }
+                              height="35px"
+                              width="35px"
+                            ></img>
+                          </div>
+                          <div>
+                            <h3>Tether</h3>
+                          </div>
+                        </div>
+                        <div className="d-lg-flex bg-white justify-content-lg-cenetr align-items-lg-cenetr p-3">
+                          <div style={{ color: "#6237de" }}>
+                            {props?.datafromparent?.asset}
+                          </div>
+                        </div>
+                      </div>
+                    ) : /* Sixth Coin */
+                    props?.datafromparent?.base_asset === "ATOM" &&
+                      props?.datafromparent?.quote_asset === "USDT" ? (
+                      <div className="LeftSide  d-lg-flex justify-content-lg-center">
+                        <div className="Ticker1 d-lg-flex justify-content-center me-3">
+                          <div className="me-3">
+                            <img
+                              src={
+                                "https://assets-cryptogenie.yantraka.ai/v1/coins/atom.svg"
+                              }
+                              height="35px"
+                              width="35px"
+                            ></img>
+                          </div>
+                          <div>
+                            <h3>ATOM</h3>
+                          </div>
+                        </div>
+
+                        <div className="Ticker2 d-lg-flex justify-content-center me-3">
+                          <div className="me-3">
+                            <img
+                              src={
+                                "https://assets-cryptogenie.yantraka.ai/v1/coins/usdt.svg"
+                              }
+                              height="35px"
+                              width="35px"
+                            ></img>
+                          </div>
+                          <div>
+                            <h3>Tether</h3>
+                          </div>
+                        </div>
+                        <div className="d-lg-flex bg-white justify-content-lg-cenetr align-items-lg-cenetr p-3">
+                          <div style={{ color: "#6237de" }}>
+                            {props?.datafromparent?.asset}
+                          </div>
+                        </div>
+                      </div>
+                    ) : /* Seventh Coin */
+                    props?.datafromparent?.base_asset === "BTC" &&
+                      props?.datafromparent?.quote_asset === "USDT" ? (
+                      <div className="LeftSide  d-lg-flex justify-content-lg-center">
+                        <div className="Ticker1 d-lg-flex justify-content-center me-3">
+                          <div className="me-3">
+                            <img
+                              src={
+                                "https://assets-cryptogenie.yantraka.ai/v1/coins/btc.svg"
+                              }
+                              height="35px"
+                              width="35px"
+                            ></img>
+                          </div>
+                          <div>
+                            <h3>Bitcoin</h3>
+                          </div>
+                        </div>
+
+                        <div className="Ticker2 d-lg-flex justify-content-center me-3">
+                          <div className="me-3">
+                            <img
+                              src={
+                                "https://assets-cryptogenie.yantraka.ai/v1/coins/usdt.svg"
+                              }
+                              height="35px"
+                              width="35px"
+                            ></img>
+                          </div>
+                          <div>
+                            <h3>Tether</h3>
+                          </div>
+                        </div>
+                        <div className="d-lg-flex bg-white justify-content-lg-cenetr align-items-lg-cenetr p-3">
+                          <div style={{ color: "#6237de" }}>
+                            {props?.datafromparent?.asset}
+                          </div>
+                        </div>
+                      </div>
+                    ) : // Eigth Coin
+                    props?.datafromparent?.base_asset === "ETH" &&
+                      props?.datafromparent?.quote_asset === "USDC" ? (
+                      <div className="LeftSide  d-lg-flex justify-content-lg-center">
+                        <div className="Ticker1 d-lg-flex justify-content-center me-3">
+                          <div className="me-3">
+                            <img
+                              src={
+                                "https://assets-cryptogenie.yantraka.ai/v1/coins/eth.svg"
+                              }
+                              height="35px"
+                              width="35px"
+                            ></img>
+                          </div>
+                          <div>
+                            <h3>Etherium</h3>
+                          </div>
+                        </div>
+
+                        <div className="Ticker2 d-lg-flex justify-content-center me-3">
+                          <div className="me-3">
+                            <img
+                              src={
+                                "https://assets-cryptogenie.yantraka.ai/v1/coins/usdc.svg"
+                              }
+                              height="35px"
+                              width="35px"
+                            ></img>
+                          </div>
+                          <div>
+                            <h3>USD Coin</h3>
+                          </div>
+                        </div>
+                        <div className="d-lg-flex bg-white justify-content-lg-cenetr align-items-lg-cenetr p-3">
+                          <div style={{ color: "#6237de" }}>
+                            {props?.datafromparent?.asset}
+                          </div>
+                        </div>
+                      </div>
+                    ) : // Ninth Coin
+                    props?.datafromparent?.base_asset === "BNB" &&
+                      props?.datafromparent?.quote_asset === "USDC" ? (
+                      <div className="LeftSide  d-lg-flex justify-content-lg-center">
+                        <div className="Ticker1 d-lg-flex justify-content-center me-3">
+                          <div className="me-3">
+                            <img
+                              src={
+                                "https://assets-cryptogenie.yantraka.ai/v1/coins/bnb.svg"
+                              }
+                              height="35px"
+                              width="35px"
+                            ></img>
+                          </div>
+                          <div>
+                            <h3>Binance</h3>
+                          </div>
+                        </div>
+
+                        <div className="Ticker2 d-lg-flex justify-content-center me-3">
+                          <div className="me-3">
+                            <img
+                              src={
+                                "https://assets-cryptogenie.yantraka.ai/v1/coins/usdc.svg"
+                              }
+                              height="35px"
+                              width="35px"
+                            ></img>
+                          </div>
+                          <div>
+                            <h3>USD Coin</h3>
+                          </div>
+                        </div>
+                        <div className="d-lg-flex bg-white justify-content-lg-cenetr align-items-lg-cenetr p-3">
+                          <div style={{ color: "#6237de" }}>
+                            {props?.datafromparent?.asset}
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      /* Tenth Coin */
+
+                      <div className="LeftSide  d-lg-flex justify-content-lg-center">
+                        <div className="Ticker1 d-lg-flex justify-content-center me-3">
+                          <div className="me-3">
+                            <img
+                              src={
+                                "https://assets-cryptogenie.yantraka.ai/v1/coins/bnb.svg"
+                              }
+                              height="35px"
+                              width="35px"
+                            ></img>
+                          </div>
+                          <div>
+                            <h3>Binance</h3>
+                          </div>
+                        </div>
+
+                        <div className="Ticker2 d-lg-flex justify-content-center me-3">
+                          <div className="me-3">
+                            <img
+                              src={
+                                "https://assets-cryptogenie.yantraka.ai/v1/coins/usdc.svg"
+                              }
+                              height="35px"
+                              width="35px"
+                            ></img>
+                          </div>
+                          <div>
+                            <h3>USD Coin</h3>
+                          </div>
+                        </div>
+                        <div className="d-lg-flex bg-white justify-content-lg-cenetr align-items-lg-cenetr p-3">
+                          <div style={{ color: "#6237de" }}>
+                            {props?.datafromparent?.asset}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="Ticker1"></div>
+                    <div classname="TickerName"></div>
+                  </div>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body ">
+                  {/* Accuracy */}
+                  <div className="border-bottom my-2">
+                    <div className="d-flex justify-content-between mb-3">
+                      <div>Last 30 Days</div>
+                      <div className="d-lg-flex flex-lg-column">
+                        <div>
+                          Correct Predictions:
+                          <span style={{ color: " #6237de" }}>262</span> / 542
+                        </div>
+                        {/* <div>==================</div> */}
+                        <div class="progress">
+                          <div
+                            class="progress-bar progress-bar "
+                            role="progressbar"
+                            // aria-valuenow={
+                            //   (100 * props?.datafromparent?.metrics?.correct_predictions) /
+                            //   props?.datafromparent?.metrics?.predicted_rows
+                            // }
+                            aria-valuenow={0}
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                            style={{
+                              width: `${
+                                props?.datafromparent?.metrics?.accuracy?.toFixed(
+                                  2
+                                ) * 100
+                              }%`,
+                              backgroundColor: "#6237DE",
+                            }}
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="d-flex justify-content-between mb-3">
+                      <div className="d-lg-flex flex-lg-row">
+                        <div className="d-lg-row flex-lg-column">
+                          <div className="" style={{ fontSize: "0.8rem" }}>
+                            <b>F1 Score</b>
+                          </div>
+                          <div className="" style={{ color: " #6237de" }}>
+                            <b>
+                              {props?.datafromparent?.metrics?.f1_score?.toFixed(
+                                2
+                              ) * 100}
+                              %
+                            </b>
+                          </div>
+                        </div>
+                        <div className="d-lg-flex justify-content-lg-center align-items-lg-center">
+                          <PieChart width={40} height={40}>
+                            <Pie
+                              data={data1}
+                              outerRadius={18}
+                              innerRadius={5}
+                              paddingAngle={0}
+                              dataKey="value"
+                              fill="#6237de"
+                            />
+                          </PieChart>
+                        </div>
+                      </div>
+                      <div className="d-lg-flex flex-lg-row">
+                        <div className="d-lg-row flex-lg-column">
+                          <div style={{ fontSize: "0.8rem" }}>
+                            <b>Precision</b>
+                          </div>
+                          <div className="" style={{ color: " #6237de" }}>
+                            <b>
+                              {props?.datafromparent?.metrics?.precision?.toFixed(
+                                2
+                              ) * 100}
+                              %
+                            </b>
+                          </div>
+                        </div>
+                        <div className="d-lg-flex justify-content-lg-center align-items-lg-center">
+                          <PieChart width={40} height={40}>
+                            <Pie
+                              data={data2}
+                              outerRadius={18}
+                              innerRadius={5}
+                              paddingAngle={0}
+                              dataKey="value"
+                              fill="#6237de"
+                            />
+                          </PieChart>
+                        </div>
+                      </div>
+                      <div className="d-lg-flex flex-lg-row">
+                        <div className="d-lg-row flex-lg-column">
+                          <div style={{ fontSize: "0.8rem" }}>
+                            <b>Recall</b>
+                          </div>
+                          <div className="" style={{ color: " #6237de" }}>
+                            <b>
+                              {props?.datafromparent?.metrics?.recall?.toFixed(
+                                2
+                              ) * 100}
+                              %
+                            </b>
+                          </div>
+                        </div>
+                        <div className="d-lg-flex justify-content-lg-center align-items-lg-center">
+                          <PieChart width={40} height={40}>
+                            <Pie
+                              data={data3}
+                              outerRadius={18}
+                              innerRadius={5}
+                              paddingAngle={0}
+                              dataKey="value"
+                              fill="#6237de"
+                            />
+                          </PieChart>
+                        </div>
+                      </div>
+                      <div className="d-lg-flex flex-lg-row">
+                        <div className="d-lg-row flex-lg-column">
+                          <div style={{ fontSize: "0.8rem" }}>
+                            <b>Accuracy</b>
+                          </div>
+                          <div className="" style={{ color: " #6237de" }}>
+                            <b>
+                              {props?.datafromparent?.metrics?.accuracy?.toFixed(
+                                2
+                              ) * 100}
+                              %
+                            </b>
+                          </div>
+                        </div>
+                        <div className="d-lg-flex justify-content-lg-center align-items-lg-center">
+                          <PieChart width={40} height={40}>
+                            <Pie
+                              data={data4}
+                              outerRadius={18}
+                              innerRadius={5}
+                              paddingAngle={0}
+                              dataKey="value"
+                              fill="#6237de"
+                            />
+                          </PieChart>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {/* True Positive */}
+                  <div className=" border-bottom my-2 ">
+                    <div className="d-flex justify-content-between">
+                      <div className="">
+                        <div>True Positive</div>
+                        <div>
+                          {props?.datafromparent?.metrics?.true_positives}
+                        </div>
+                      </div>
+                      <div className="">
+                        <div>False Positive</div>
+                        <div>
+                          {props?.datafromparent?.metrics?.false_positives}
+                        </div>
+                      </div>
+                      <div className="">
+                        <div>True Negative</div>
+                        <div>
+                          {props?.datafromparent?.metrics?.true_negative}
+                        </div>
+                      </div>
+                      <div className="">
+                        <div>False Negative</div>
+                        <div>
+                          {props?.datafromparent?.metrics?.false_negative}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Capacity */}
+                  <div className="border-bottom my-2">
+                    <div className="d-flex justify-content-around mb-3">
+                      {/* Prediction Capacity */}
+                      <div className="d-lg-flex flex-lg-row">
+                        <div className="d-lg-row flex-lg-column">
+                          <div className="" style={{ fontSize: "0.8rem" }}>
+                            <b>Prediction Capacity</b>
+                          </div>
+                          <div className="" style={{ color: " #6237de" }}>
+                            <b>
+                              {props?.datafromparent?.metrics?.prediction_capacity?.toFixed(
+                                2
+                              ) * 100}
+                              %
+                            </b>
+                          </div>
+                        </div>
+                        <div className="d-lg-flex justify-content-lg-center align-items-lg-center">
+                          <PieChart width={40} height={40}>
+                            <Pie
+                              data={data1}
+                              outerRadius={18}
+                              innerRadius={5}
+                              paddingAngle={0}
+                              dataKey="value"
+                              fill="#6237de"
+                            />
+                          </PieChart>
+                        </div>
+                      </div>
+                      {/*  Tradable Capacity */}
+                      <div className="d-lg-flex flex-lg-row">
+                        <div className="d-lg-row flex-lg-column">
+                          <div className="" style={{ fontSize: "0.8rem" }}>
+                            <b>Tradable Capacity</b>
+                          </div>
+                          <div className="" style={{ color: " #6237de" }}>
+                            <b>
+                              {props?.datafromparent?.metrics?.tradable_capacity?.toFixed(
+                                2
+                              ) * 100}
+                              %
+                            </b>
+                          </div>
+                        </div>
+                        <div className="d-lg-flex justify-content-lg-center align-items-lg-center">
+                          <PieChart width={40} height={40}>
+                            <Pie
+                              data={data1}
+                              outerRadius={18}
+                              innerRadius={5}
+                              paddingAngle={0}
+                              dataKey="value"
+                              fill="#6237de"
+                            />
+                          </PieChart>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Highest High Lowest Low */}
+                  <div className="d-flex justify-content-around my-2">
+                    <div className="d-flex flex-column ">
+                      <div>Highest High 14</div>
+                      <div>
+                        {props?.datafromparent?.metadata?.highest_high_14}
+                      </div>
+                    </div>
+                    <div className="d-flex flex-column mb-5">
+                      <div>Lowest Low 14</div>
+                      <div>
+                        {props?.datafromparent?.metadata?.lowest_low_14}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Cards All */}
-        <div className="d-lg-flex flex-lg-row px-3 py-5 justify-content-lg-around">
+        <div className="d-lg-flex flex-lg-row px-1 py-1 justify-content-lg-around">
           {/* Card 1 */}
-          <div className="CoinCards bg-white p-3">
+          <div className="CoinCards bg-white p-2 m-1 card border-0">
             <div style={{ fontSize: ".8rem" }}>11:00 AM - 11:30 AM</div>
             <hr></hr>
 
@@ -665,7 +1533,7 @@ const CoinInfoBlock = (props) => {
             </div>
           </div>
           {/* Card 2 */}
-          <div className="CoinCards bg-white p-3">
+          <div className="CoinCards bg-white p-3 m-1 card border-0">
             <div style={{ fontSize: ".8rem" }}>11:00 AM - 11:30 AM</div>
             <hr></hr>
 
@@ -716,7 +1584,7 @@ const CoinInfoBlock = (props) => {
             </div>
           </div>
           {/* Card 3 */}
-          <div className="CoinCards bg-white p-3">
+          <div className="CoinCards bg-white p-3 m-1 card border-0">
             <div style={{ fontSize: ".8rem" }}>11:00 AM - 11:30 AM</div>
             <hr></hr>
 
@@ -767,7 +1635,7 @@ const CoinInfoBlock = (props) => {
             </div>
           </div>
           {/* Card 4 */}
-          <div className="CoinCards bg-white p-3">
+          <div className="CoinCards bg-white p-3 m-1 card border-0">
             <div style={{ fontSize: ".8rem" }}>11:00 AM - 11:30 AM</div>
             <hr></hr>
 
@@ -818,7 +1686,7 @@ const CoinInfoBlock = (props) => {
             </div>
           </div>
           {/* Card 5 */}
-          <div className="CoinCards bg-white p-3">
+          <div className="CoinCards bg-white p-3 m-1 card border-0">
             <div style={{ fontSize: ".8rem" }}>11:00 AM - 11:30 AM</div>
             <hr></hr>
 
@@ -869,7 +1737,7 @@ const CoinInfoBlock = (props) => {
             </div>
           </div>
           {/* Card 6 */}
-          <div className="CoinCards bg-white p-3">
+          <div className="CoinCards bg-white p-3 m-1 card border-0">
             <div style={{ fontSize: ".8rem" }}>11:00 AM - 11:30 AM</div>
             <hr></hr>
 
@@ -920,13 +1788,8 @@ const CoinInfoBlock = (props) => {
             </div>
           </div>
           {/* Card 7 */}
-          <div className="CoinCards ">
-            <img
-              src={PredictionCard}
-              className="img-fluid"
-              height="500px"
-              width="300px"
-            />
+          <div className="CoinCards m-1 card border-0">
+            <img src={PredictionCard} className="img-fluid h-100 w-100" />
           </div>
           {/* Cards All ^^^^^ */}
         </div>

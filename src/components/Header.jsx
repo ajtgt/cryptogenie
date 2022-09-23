@@ -5,6 +5,8 @@ import LoginButton from "../components/LoginButton";
 import LogoutButton from "../components/LogoutButton";
 import { Link, useLocation } from "react-router-dom";
 
+import { HashLink, NavHashLink } from "react-router-hash-link";
+
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../features/user/userSlice";
 
@@ -12,10 +14,15 @@ const Header = () => {
   const { isAuthenticated, getIdTokenClaims } = useAuth0();
   const dispatch = useDispatch();
 
+  const location = useLocation();
+  /* console.log("Location: ", location); */
+
+  // const location = useLocation();
+
   // const user = useSelector((state) => state.user.token);
   // console.log("Token state", user);
 
-  const { pathname, hash, key } = useLocation();
+  // const { pathname, hash, key } = useLocation();
 
   isAuthenticated &&
     getIdTokenClaims()
@@ -26,23 +33,30 @@ const Header = () => {
         console.debug("Something went wrong", err);
       });
 
+  // location = {
+  //   pathname: "/",
+  //   hash: "#projects",
+  // };
+
   // Navigation to particular part of page
-  useEffect(() => {
-    // if not a hash link, scroll to top
-    if (hash === "") {
-      window.scrollTo(0, 0);
-    }
-    // else scroll to id
-    else {
-      setTimeout(() => {
-        const id = hash.replace("#", "");
-        const element = document.getElementById(id);
-        if (element) {
-          element.scrollIntoView();
-        }
-      }, 0);
-    }
-  }, [pathname, hash, key]); // do this on route change
+  // useEffect(() => {
+
+  //   if (hash === "") {
+  //     window.scrollTo(0, 0);
+  //   }
+
+  //   else {
+  //     setTimeout(() => {
+  //       const id = hash.replace("#", "");
+  //       const element = document.getElementById(id);
+  //       if (element) {
+  //         element.scrollIntoView();
+  //       }
+  //     }, 0);
+  //   }
+  // }, [pathname, hash, key]);
+
+  // do this on route change
 
   // Navbar active nav item
 
@@ -93,13 +107,36 @@ const Header = () => {
   //   e.target.className = "active";
   // }
 
+  /* Scroll Code */
+  // document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  //   anchor.addEventListener("click", function (e) {
+  //     e.preventDefault();
+  //     document.querySelector(this.getAttribute("href")).scrollIntoView({
+  //       behavior: "smooth",
+  //     });
+  //   });
+  // });
+
+  /*   Scroll Code 2 */
+
+  // useEffect(() => {
+  //   if (location.hash) {
+  //     let elem = document.getElementById(location.hash.slice(1));
+  //     if (elem) {
+  //       elem.scrollIntoView({ behavior: "smooth" });
+  //     }
+  //   } else {
+  //     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  //   }
+  // }, [location]);
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom bg-white sticky-top">
         {/* Desktop View  */}
         <div className="container my-1 py-3 d-none d-lg-block d-lg-flex">
           <div>
-            <a className="navbar-brand" href="/">
+            <a className="navbar-brand" href="/home">
               <img src={Logo} className="img-fluid" />
             </a>
           </div>
@@ -124,59 +161,86 @@ const Header = () => {
               // onClick={myFunction}
               className="navbar-nav  mb-2 mb-lg-0 d-md-flex flex-row mx-md-auto "
             >
-              <Link to="/" className="nav-item  me-5 text-decoration-none">
-                <a
-                  className="nav-link active fs-6"
-                  style={{ fontFamily: "Satoshi" }}
-                  aria-current="page"
-                  href="/"
-                >
-                  Home
-                </a>
-              </Link>
-
-              <Link
-                to="/#features"
-                className="nav-item text-decoration-none me-5"
+              {/* <Link to="/" className="nav-item  me-5 text-decoration-none"> */}
+              <a
+                className="nav-link active fs-6  me-4"
+                style={{ fontFamily: "Satoshi" }}
+                aria-current="page"
+                href="/home"
               >
-                <a
-                  className="nav-link  fs-6"
-                  style={{ fontFamily: "Satoshi" }}
-                  aria-current="page"
-                  href="#features"
-                >
-                  Features
-                </a>
-              </Link>
+                Home
+              </a>
+              {/* </Link> */}
 
-              <Link
+              <a
+                className="nav-link fs-6 me-4"
+                style={{ fontFamily: "Satoshi" }}
+                aria-current="page"
+                href="/home#features"
+              >
+                Features
+              </a>
+              {/* <a to="/#features" className="nav-item text-decoration-none me-5">
+                Features
+              </a> */}
+              {/* <NavHashLink
+                className="nav-link  fs-6 me-4"
+                style={{ fontFamily: "Satoshi" }}
+                aria-current="page"
+                smooth
+                to="/home/#features"
+                // href="/home#features"
+              >
+                Features
+              </NavHashLink> */}
+
+              {/* <Link to="/home/#features">Features</Link> */}
+
+              {/*  <HashLink
+                // example of custom scroll function using the scroll prop
+                // scroll={(el) => el.scrollIntoView({ behavior: "smooth" })}
+                // to={"/home/#features"}
+                smooth
+                to="/home/#features"
+              >
+                Features
+              </HashLink> */}
+              {/* <Link
+                to={{
+                  pathname: "/home",
+                }}
+              >
+                Features
+              </Link> */}
+
+              {/* </Link> */}
+              {/* <Link
                 to="/#pricing"
                 className="nav-item text-decoration-none me-5"
+              > */}
+              <a
+                className="nav-link fs-6 me-4"
+                style={{ fontFamily: "Satoshi" }}
+                aria-current="page"
+                href="/home#pricing"
               >
-                <a
-                  className="nav-link fs-6"
-                  style={{ fontFamily: "Satoshi" }}
-                  aria-current="page"
-                  href="#pricing"
-                >
-                  Pricing
-                </a>
-              </Link>
+                Pricing
+              </a>
+              {/* </Link> */}
               {/* <Link
                 to="/trendprediction"
                 className="nav-item me-5 text-decoration-none"
               > */}
-                <a
-                  className="nav-link  fs-6"
-                  style={{ fontFamily: "Satoshi" }}
-                  href="/trendprediction"
-                >
-                  Prediction
-                </a>
+              <a
+                className="nav-link  fs-6 me-4"
+                style={{ fontFamily: "Satoshi" }}
+                href="/trendprediction"
+              >
+                Prediction
+              </a>
               {/* </Link> */}
               {/* <a href="/trendprediction">Prediction</a> */}
               {/* <Link className="nav-item text-decoration-none"> */}
-
               {/* </Link> */}
             </ul>
           </div>
@@ -222,7 +286,7 @@ const Header = () => {
                 <a
                   className="nav-link active"
                   aria-current="page"
-                  href="#features"
+                  href="/#features"
                 >
                   Features
                 </a>
