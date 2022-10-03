@@ -154,11 +154,11 @@ const LandingPage = () => {
                   techniques to create models that generate predictive trends
                   for crypto assets.
                 </div>
-                <div class="d-flex d-sm-flex justify-content-center justify-content-sm-start">
+                <div className="d-flex d-sm-flex justify-content-center justify-content-sm-start">
                   <a
                     type="button"
-                    class="col-11 col-sm-4 btn btn-primary mt-3 mb-5 rounded-0 py-3"
-                    href="trendprediction"
+                    className="col-11 col-sm-4 btn btn-primary mt-3 mb-5 rounded-0 py-3"
+                    href="trendprediction1"
                   >
                     Go To Predictions
                   </a>
@@ -388,27 +388,27 @@ const LandingPage = () => {
             {/* <div className="row d-sm-flex d-lg-flex flex-lg-row flex-sm-row d-none d-sm-block g-3 ">
           <div className="col-sm-6 col-md-3"> */}
             {/* <div className="container d-flex justify-content-between"> */}
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-3 d-flex align-items-stretch">
+            <div className="container">
+              <div className="row">
+                <div className="col-lg-3 d-flex align-items-stretch">
                   <PricingCard
                     data={plansData[0]}
                     user={user[1]?.prices[0]?.id}
                   />
                 </div>
-                <div class="col-lg-3 d-flex align-items-stretch">
+                <div className="col-lg-3 d-flex align-items-stretch">
                   <PricingCard
                     data={plansData[1]}
                     user={user[1]?.prices[0]?.id}
                   />
                 </div>
-                <div class="col-lg-3 d-flex align-items-stretch">
+                <div className="col-lg-3 d-flex align-items-stretch">
                   <PricingCard
                     data={plansData[2]}
                     user={user[1]?.prices[0]?.id}
                   />
                 </div>
-                <div class="col-lg-3 d-flex align-items-stretch">
+                <div className="col-lg-3 d-flex align-items-stretch">
                   <PricingCard
                     data={plansData[3]}
                     user={user[1]?.prices[0]?.id}
@@ -430,15 +430,15 @@ const LandingPage = () => {
             <div className="row d-flex flex-row d-block d-sm-none">
               <div
                 id="carouselExampleIndicators"
-                class="carousel carousel-dark slide"
+                className="carousel carousel-dark slide"
                 data-bs-ride="carousel"
               >
-                <div class="carousel-indicators">
+                <div className="carousel-indicators">
                   <button
                     type="button"
                     data-bs-target="#carouselExampleIndicators"
                     data-bs-slide-to="0"
-                    class="active"
+                    className="active"
                     aria-current="true"
                     aria-label="Slide 1"
                   ></button>
@@ -461,8 +461,8 @@ const LandingPage = () => {
                     aria-label="Slide 4"
                   ></button>
                 </div>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
+                <div className="carousel-inner">
+                  <div className="carousel-item active">
                     <div className="row">
                       <div className="col-12">
                         <PricingCardsM />
@@ -470,7 +470,7 @@ const LandingPage = () => {
                     </div>
                   </div>
 
-                  <div class="carousel-item">
+                  <div className="carousel-item">
                     <div className="row">
                       <div className="col-12">
                         <PricingCardsM data={plansData} />
@@ -478,7 +478,7 @@ const LandingPage = () => {
                     </div>
                   </div>
 
-                  <div class="carousel-item">
+                  <div className="carousel-item">
                     <div className="row">
                       <div className="col-12">
                         <PricingCardsM data={plansData} />
@@ -486,7 +486,7 @@ const LandingPage = () => {
                     </div>
                   </div>
 
-                  <div class="carousel-item">
+                  <div className="carousel-item">
                     <div className="row">
                       <div className="col-12">
                         <PricingCardsM data={plansData} />
@@ -495,28 +495,28 @@ const LandingPage = () => {
                   </div>
                 </div>
                 <button
-                  class="carousel-control-prev"
+                  className="carousel-control-prev"
                   type="button"
                   data-bs-target="#carouselExampleIndicators"
                   data-bs-slide="prev"
                 >
                   <span
-                    class="carousel-control-prev-icon"
+                    className="carousel-control-prev-icon"
                     aria-hidden="true"
                   ></span>
-                  <span class="visually-hidden">Previous</span>
+                  <span className="visually-hidden">Previous</span>
                 </button>
                 <button
-                  class="carousel-control-next"
+                  className="carousel-control-next"
                   type="button"
                   data-bs-target="#carouselExampleIndicators"
                   data-bs-slide="next"
                 >
                   <span
-                    class="carousel-control-next-icon"
+                    className="carousel-control-next-icon"
                     aria-hidden="true"
                   ></span>
-                  <span class="visually-hidden">Next</span>
+                  <span className="visually-hidden">Next</span>
                 </button>
               </div>
             </div>
@@ -531,7 +531,7 @@ const LandingPage = () => {
                 src={InvestToCryptoGenie}
                 className="img-fluid card-img-top"
               />
-              <div class="card-img-overlay card-inverse p-5">
+              <div className="card-img-overlay card-inverse p-5">
                 <div className="row text-white mt-5 h2">
                   <div className="col-sm-8">
                     Invest your money to the CryptoGenie and earn more money
@@ -548,17 +548,17 @@ const LandingPage = () => {
                     </div>
                     {/* Contact Us Modal Start  */}
                     <div
-                      class="modal fade"
+                      className="modal fade"
                       id="staticBackdrop"
                       data-bs-backdrop="static"
                       data-bs-keyboard="false"
-                      tabindex="-1"
+                      tabIndex="-1"
                       aria-labelledby="staticBackdropLabel"
                       aria-hidden="true"
                     >
-                      <div class="modal-dialog modal-xl">
-                        <div class="modal-content">
-                          <div class="modal-body">
+                      <div className="modal-dialog modal-xl">
+                        <div className="modal-content">
+                          <div className="modal-body">
                             <div className="row  ">
                               <div className="col-12 col-sm-12  col-lg-4 d-flex flex-column align-items-between p-4">
                                 <div>
@@ -571,7 +571,7 @@ const LandingPage = () => {
                                     />
                                     <button
                                       type="button"
-                                      class="btn-close btn-sm  d-lg-none"
+                                      className="btn-close btn-sm  d-lg-none"
                                       data-bs-dismiss="modal"
                                       aria-label="Close"
                                     ></button>
@@ -594,7 +594,7 @@ const LandingPage = () => {
                                   <div className="d-none d-lg-block ">
                                     <button
                                       type="button"
-                                      class="btn-close btn-sm"
+                                      className="btn-close btn-sm"
                                       data-bs-dismiss="modal"
                                       aria-label="Close"
                                     ></button>
@@ -604,7 +604,7 @@ const LandingPage = () => {
                                 {/* Form Start ^^^^  */}
                                 <form onSubmit={formik.handleSubmit}>
                                   <div className="row mb-3">
-                                    <div class="col-md-6">
+                                    <div className="col-md-6">
                                       {formik.touched.firstName &&
                                       formik.errors.firstName ? (
                                         <p
@@ -616,17 +616,17 @@ const LandingPage = () => {
                                       ) : null}
                                       <input
                                         id="firstName"
-                                        name="firstName"
+                                        // name="firstName"
                                         type="text"
                                         placeholder="First Name"
                                         onChange={formik.handleChange}
                                         value={formik.values.firstName}
                                         onBlur={formik.handleBlur}
-                                        class="form-control"
+                                        className="form-control"
                                       />
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div className="col-md-6">
                                       {formik.touched.lastName &&
                                       formik.errors.lastName ? (
                                         <p
@@ -638,13 +638,13 @@ const LandingPage = () => {
                                       ) : null}
                                       <input
                                         id="lastName"
-                                        name="lastName"
+                                        // name="lastName"
                                         type="text"
                                         placeholder="Last Name"
                                         onChange={formik.handleChange}
                                         value={formik.values.lastName}
                                         onBlur={formik.handleBlur}
-                                        class="form-control"
+                                        className="form-control"
                                       />
                                     </div>
                                   </div>
@@ -661,13 +661,13 @@ const LandingPage = () => {
                                       ) : null}
                                       <input
                                         id="email"
-                                        name="email"
+                                        // name="email"
                                         type="email"
                                         placeholder="Your Email Address"
                                         onChange={formik.handleChange}
                                         value={formik.values.email}
                                         onBlur={formik.handleBlur}
-                                        class="form-control"
+                                        className="form-control"
                                       />
                                     </div>
                                   </div>
@@ -684,11 +684,11 @@ const LandingPage = () => {
                                       ) : null}
                                       <select
                                         id="subject"
-                                        name="subject"
+                                        // name="subject"
                                         onChange={formik.handleChange}
                                         value={formik.values.subject}
                                         onBlur={formik.handleBlur}
-                                        class="form-select"
+                                        className="form-select"
                                       >
                                         <option value="" disabled="disabled">
                                           Select Subject
@@ -721,13 +721,13 @@ const LandingPage = () => {
                                       ) : null}
                                       <textarea
                                         id="message"
-                                        name="message"
+                                        // name="message"
                                         type="text"
                                         placeholder="Message"
                                         onChange={formik.handleChange}
                                         value={formik.values.message}
                                         onBlur={formik.handleBlur}
-                                        class="form-control"
+                                        className="form-control"
                                         rows="3"
                                       ></textarea>
                                       <div className="d-flex justify-content-end text-dark h6">
@@ -737,7 +737,7 @@ const LandingPage = () => {
                                     <div className="">
                                       <button
                                         type="submit"
-                                        class="btn btn-primary col-md-12"
+                                        className="btn btn-primary col-md-12"
                                       >
                                         Send
                                       </button>
@@ -767,7 +767,7 @@ const LandingPage = () => {
                 src={InvestToCryptoGenieMobile}
                 className="img-fluid card-img-top"
               />
-              <div class="card-img-overlay card-inverse">
+              <div className="card-img-overlay card-inverse">
                 <div className="text-white mt-5">
                   Invest your money to the CryptoGenie and earn more money
                   <div>
@@ -805,8 +805,8 @@ const LandingPage = () => {
                 <div className="d-flex d-sm-flex justify-content-center justify-content-sm-start">
                   <a
                     type="button"
-                    class="col-10 col-sm-4 btn btn-primary rounded-0 p-3"
-                    href="trendprediction"
+                    className="col-10 col-sm-4 btn btn-primary rounded-0 p-3"
+                    href="trendprediction1"
                   >
                     Go To Predictions
                   </a>

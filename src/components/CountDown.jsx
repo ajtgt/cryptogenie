@@ -55,11 +55,21 @@ const CountDown = () => {
   //   }
   // }, [seconds]);
 
+  let timeout;
+
+  function myFunction() {
+    timeout = setTimeout(alertFunc, 3 * 1000);
+  }
+
+  function alertFunc() {
+    dispatch(setThreshold(false));
+  }
   useEffect(() => {
-    if (seconds === 15 || seconds === 45) {
+    if (seconds === 1 && minutes === 0) {
       dispatch(setThreshold(true));
-      /* dispatch(setThreshold(true)); */
+      /*  dispatch(setThreshold(!threshold)); */
     }
+    myFunction();
   }, [seconds]);
 
   return (

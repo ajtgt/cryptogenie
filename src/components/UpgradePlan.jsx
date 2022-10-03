@@ -36,22 +36,32 @@ const UpgradePlan = () => {
 
   return (
     <div>
-      <div class="container mt-3 mb-5">
-        <ul class="nav justify-content-center nav-pills mb-3 " role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" data-bs-toggle="pill" href="#monthly">
+      <div className="container mt-3 mb-5">
+        <ul
+          className="nav justify-content-center nav-pills mb-3 "
+          role="tablist"
+        >
+          <li className="nav-item">
+            <a
+              className="nav-link active"
+              data-bs-toggle="pill"
+              href="#monthly"
+            >
               Monthly
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="pill" href="#annual">
+          <li className="nav-item">
+            <a className="nav-link" data-bs-toggle="pill" href="#annual">
               Annual
             </a>
           </li>
         </ul>
 
-        <div class="tab-content">
-          <div id="monthly" class="d-flex flex-row container tab-pane active">
+        <div className="tab-content">
+          <div
+            id="monthly"
+            className="d-flex flex-row container tab-pane active"
+          >
             {/* <PricingCards data={monthlyData[0]} user={user[1]?.prices[0]?.id} />
             <PricingCards data={monthlyData[1]} user={user[2]?.prices[0]?.id} />
             <PricingCards data={monthlyData[2]} user={user[1]?.prices[0]?.id} />
@@ -61,7 +71,7 @@ const UpgradePlan = () => {
             <PricingCard data={monthlyData[2]} user={user[1]?.prices[0]?.id} />
             <PricingCards data={monthlyData[3]} user={user[2]?.prices[0]?.id} />
           </div>
-          <div id="annual" class="d-flex flex-row container tab-pane fade">
+          <div id="annual" className="d-flex flex-row container tab-pane fade">
             <br />
             {/* <PricingCards data={annualData[0]} user={user[1]?.prices[0]?.id} />
             <PricingCards data={annualData[1]} user={user[2]?.prices[0]?.id} />

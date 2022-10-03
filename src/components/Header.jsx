@@ -234,7 +234,7 @@ const Header = () => {
               <a
                 className="nav-link  fs-6 me-4"
                 style={{ fontFamily: "Satoshi" }}
-                href="/trendprediction"
+                href="/trendprediction1"
               >
                 Prediction
               </a>

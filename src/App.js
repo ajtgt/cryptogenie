@@ -14,6 +14,7 @@ import { selectUser } from "../src/features/user/userSlice";
 import MainPage from "./pages/mainpage/MainPage";
 import Yantraka from "./pages/yantraka/Yantraka";
 import TrendPrediction from "./pages/trendprediction/TrendPrediction";
+import TrendPrediction1 from "./pages/trendprediction/TrendPrediction1";
 import ComingSoon from "./pages/comingsoon/ComingSoon";
 import DontLogIn from "./pages/dontlogin/DontLogIn";
 import UpGradePlan from "./pages/upgradeplan/UpGradePlan";
@@ -33,6 +34,9 @@ const App = () => {
   return (
     <div>
       <Switch>
+        <Route exact path="/">
+          <LandingPage />
+        </Route>
         <Route exact path="/home">
           <LandingPage />
         </Route>
@@ -55,8 +59,11 @@ const App = () => {
         <Route exact path="/yantraka">
           <Yantraka />
         </Route>
-        <Route exact path="/trendprediction">
+        {/* <Route exact path="/trendprediction">
           <TrendPrediction />
+        </Route> */}
+        <Route exact path="/trendprediction1">
+          <TrendPrediction1 />
         </Route>
         <Route exact path="/comingsoon">
           <ComingSoon />

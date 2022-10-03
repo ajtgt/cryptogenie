@@ -5,7 +5,7 @@ import blur from "../custom.scss";
 
 // import { pred } from "../../features/user/predSlice";
 // import { threshold } from "../../features/user/thresholdSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { setThreshold } from "../features/user/thresholdSlice";
 
 import Select from "react-select";
@@ -168,7 +168,7 @@ const CoinInfoBlock = (props) => {
     <div className="Coins p-3">
       {/*       <button
         type="button"
-        class="btn btn-primary"
+        className="btn btn-primary"
         // onClick={() => {
         //   dispatch(threshold());
         // }}
@@ -580,7 +580,7 @@ const CoinInfoBlock = (props) => {
             )}
 
             <div className="Ticker1"></div>
-            <div classname="TickerName"></div>
+            <div className="TickerName"></div>
           </div>
           <div className="RightSide d-lg-flex justify-content-lg-center">
             <div className="d-lg-flex flex-column justify-content-lg-cenetr align-items-lg-center">
@@ -626,7 +626,7 @@ const CoinInfoBlock = (props) => {
         {/* Header - 1*/}
 
         <div className="d-lg-flex justify-content-lg-around">
-          <div classname="d-lg-flex flex-lg-column">
+          <div className="d-lg-flex flex-lg-column">
             <div>Last</div>
             <div>30 Days</div>
           </div>
@@ -637,9 +637,9 @@ const CoinInfoBlock = (props) => {
               <span style={{ color: " #6237de" }}>262</span> / 542
             </div>
             {/* <div>==================</div> */}
-            <div class="progress">
+            <div className="progress">
               <div
-                class="progress-bar progress-bar "
+                className="progress-bar progress-bar "
                 role="progressbar"
                 // aria-valuenow={
                 //   (100 * props?.datafromparent?.metrics?.correct_predictions) /
@@ -814,13 +814,13 @@ const CoinInfoBlock = (props) => {
           <div
             className="modal fade "
             id="NextModal"
-            tabindex="-1"
+            tabIndex="-1"
             aria-labelledby="exampleModalLabel"
             aria-hidden="true"
           >
-            <div class="modal-dialog modal-lg">
-              <div class="modal-content">
-                <div class="modal-header bg-light">
+            <div className="modal-dialog modal-lg">
+              <div className="modal-content">
+                <div className="modal-header bg-light">
                   <div className="LeftSide d-lg-flex justify-content-lg-start">
                     {/* First Coin  */}
                     {props?.datafromparent?.base_asset === "BTC" &&
@@ -1219,16 +1219,16 @@ const CoinInfoBlock = (props) => {
                     )}
 
                     <div className="Ticker1"></div>
-                    <div classname="TickerName"></div>
+                    <div className="TickerName"></div>
                   </div>
                   <button
                     type="button"
-                    class="btn-close"
+                    className="btn-close"
                     data-bs-dismiss="modal"
                     aria-label="Close"
                   ></button>
                 </div>
-                <div class="modal-body ">
+                <div className="modal-body ">
                   {/* Accuracy */}
                   <div className="border-bottom my-2">
                     <div className="d-flex justify-content-between mb-3">
@@ -1239,9 +1239,9 @@ const CoinInfoBlock = (props) => {
                           <span style={{ color: " #6237de" }}>262</span> / 542
                         </div>
                         {/* <div>==================</div> */}
-                        <div class="progress">
+                        <div className="progress">
                           <div
-                            class="progress-bar progress-bar "
+                            className="progress-bar progress-bar "
                             role="progressbar"
                             // aria-valuenow={
                             //   (100 * props?.datafromparent?.metrics?.correct_predictions) /

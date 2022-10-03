@@ -57,8 +57,8 @@ const PricingCard = ({ data, user }) => {
   };
   return (
     <>
-      <div class="card">
-        <div class="card-body">
+      <div className="card">
+        <div className="card-body">
           <div className="mb-4" style={{ height: "10px" }}>
             <img src={BlackLine} className="w-100" />
           </div>
@@ -78,11 +78,12 @@ const PricingCard = ({ data, user }) => {
               <img className="mt-auto" src={PricingCard1} />
             </div>
             <div style={{ height: "150px" }}>
-              {data?.features.map((f) => {
+              {data?.features.map((f, i) => {
                 return (
                   <div
                     className="d-flex flex-column  align-items-lg-start mb-1 pb-4"
                     style={{ height: "32px" }}
+                    key={i}
                   >
                     <div className="d-lg-flex justify-content-lg-start ">
                       <div className=" me-3">
@@ -110,7 +111,7 @@ const PricingCard = ({ data, user }) => {
               <div className=" d-lg-flex  justify-content-lg-center w-100  mt-auto">
                 <button
                   type="button"
-                  class=" btn btn-primary w-100 rounded-0 p-3 mt-5"
+                  className=" btn btn-primary w-100 rounded-0 p-3 mt-5"
                 >
                   {data.button1}
                 </button>

@@ -100,9 +100,12 @@ const PricingCards = ({ data, user }) => {
           >
             <img className="mt-auto" src={PricingCard1} />
           </div>
-          {data?.features.map((f) => {
+          {data?.features.map((f, i) => {
             return (
-              <div className="d-flex flex-column  align-items-start mb-1 ">
+              <div
+                className="d-flex flex-column  align-items-start mb-1 "
+                key={i}
+              >
                 <div className="d-lg-flex justify-content-lg-start">
                   <div className=" me-3">
                     <img src={Tick} width="24px" height="24px" />
@@ -118,7 +121,7 @@ const PricingCards = ({ data, user }) => {
             <div className="d-lg-flex  justify-content-lg-center  mt-auto">
               <button
                 type="button"
-                class="btn btn-primary w-100 rounded-0 p-3 mt-5"
+                className="btn btn-primary w-100 rounded-0 p-3 mt-5"
                 onClick={clickFunction}
               >
                 {data.button2}
@@ -128,7 +131,7 @@ const PricingCards = ({ data, user }) => {
             <div className="d-lg-flex  justify-content-lg-center  mt-auto">
               <button
                 type="button"
-                class="btn btn-primary w-100 rounded-0 p-3 mt-5"
+                className="btn btn-primary w-100 rounded-0 p-3 mt-5"
               >
                 {data.button1}
               </button>
@@ -184,7 +187,7 @@ export default PricingCards;
 //                 <div className="d-lg-flex  justify-content-lg-center  mt-auto">
 //                   <button
 //                     type="button"
-//                     class="btn btn-primary w-100 rounded-0 p-3 mt-5"
+//                     className="btn btn-primary w-100 rounded-0 p-3 mt-5"
 //                   >
 //                     {e.button2}
 //                   </button>
@@ -193,7 +196,7 @@ export default PricingCards;
 //                 <div className="d-lg-flex  justify-content-lg-center  mt-auto">
 //                   <button
 //                     type="button"
-//                     class="btn btn-primary w-100 rounded-0 p-3 mt-5"
+//                     className="btn btn-primary w-100 rounded-0 p-3 mt-5"
 //                   >
 //                     {e.button1}
 //                   </button>
@@ -256,7 +259,7 @@ export default PricingCards;
 //         <div className="d-lg-flex  justify-content-lg-center  mt-auto">
 //           <button
 //             type="button"
-//             class="btn btn-primary w-100 rounded-0 p-3 mt-5"
+//             className="btn btn-primary w-100 rounded-0 p-3 mt-5"
 //           >
 //             {data.button2}
 //           </button>
@@ -265,7 +268,7 @@ export default PricingCards;
 //         <div className="d-lg-flex  justify-content-lg-center  mt-auto">
 //           <button
 //             type="button"
-//             class="btn btn-primary w-100 rounded-0 p-3 mt-5"
+//             className="btn btn-primary w-100 rounded-0 p-3 mt-5"
 //           >
 //             {data.button1}
 //           </button>

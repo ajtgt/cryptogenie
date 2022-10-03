@@ -86,7 +86,7 @@ const LoginButton = () => {
       {!isAuthenticated && (
         <div className=" d-flex justify-content-end d-block d-sm-block d-lg-none">
           <div>
-            <img src={Avatar} alt="Avatar" classsName="img-fluid"></img>
+            <img src={Avatar} alt="Avatar" className="img-fluid"></img>
           </div>
 
           <div className="dropdown ">

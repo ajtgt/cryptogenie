@@ -44,7 +44,7 @@ const MainPage = () => {
                   art research papers
                 </div>
                 <div>
-                  <button type="button" class="btn btn-primary">
+                  <button type="button" className="btn btn-primary">
                     Go to CryptoGenie
                   </button>
                 </div>
@@ -66,7 +66,7 @@ const MainPage = () => {
                 <div className="mb-5">
                   Our new product. Early education for productive work
                 </div>
-                <button type="button" class="btn btn-primary w-50 h-100">
+                <button type="button" className="btn btn-primary w-50 h-100">
                   Request Demo
                 </button>
               </div>

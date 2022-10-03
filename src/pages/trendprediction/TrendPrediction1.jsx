@@ -15,7 +15,7 @@ import { pred } from "../../features/user/predSlice";
 import axios from "axios";
 
 const TrendPrediction = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   // const loading = useRef(false);
 
   const [filteredCoins, setFilteredCoins] = useState([]);
@@ -69,13 +69,16 @@ const TrendPrediction = () => {
   };
 
   async function fetchPredData() {
-    // setLoading(true);
     // loading.current = true;
+    setLoading(true);
+
+    //  console.log("useEffect Loading", loading);
     const response = await axios.get(url, config);
     setCoinsData(response?.data?.data?.payload); /* Working */
 
     if (response && response.data && response.data.data) {
       return setLoading(false);
+      console.log("response", response);
       // return (loading.current = false);
     }
     return [];
@@ -94,30 +97,38 @@ const TrendPrediction = () => {
     fetchPredData();
   }, []);
 
+  //   console.log("useEffect Loading", loading);
+
   console.log("setCoinsData", coinsData);
 
-  /*   useEffect(() => {
-    setTrigger(thresholdindicator);
+  useEffect(() => {
+    if (thresholdindicator === true) {
+      setLoading(true);
+      setTrigger(true);
+    }
   }, [thresholdindicator]);
 
   useEffect(() => {
-    let interval;
-    setLoading(true);
+    console.log("trigger Laoding======", trigger);
+    // let interval;
     if (trigger === true) {
-      interval = setTimeout(() => {
+      //   interval =
+      setTimeout(() => {
         // console.log("Query Status is 0");
-        console.log("OOOOOOOh Yes");
+        console.log("OOOOOOOh Yessssssssssssssssss");
+        // alert("OOOOOh Yes");
         setLoading(false);
-      }, 15 * 1000);
-    }
-    // else {
-    //   fetchPredData();
-    //   console.log("NoNoNoNoNoNoNoNoNo");
-    //   setLoading(false);
-    // }
+      }, 4 * 60 * 1000);
+    } else {
+      //   fetchPredData();
+      console.log("NoNoNoNoNoNoNoNoNo");
+      console.log("trigger Laoding oooh no ======", trigger);
 
-    return clearInterval(interval);
-  }, [trigger]); */
+      //   setLoading(false);
+    }
+
+    return clearInterval();
+  }, [trigger]);
 
   // Logic 1
   /* useEffect(() => {
@@ -259,15 +270,19 @@ const TrendPrediction = () => {
     <div>
       <Header />
 
-      {loading && (
+      {loading ? (
         <>
-          <div className="d-flex justify-content-center align-items-center vh-100 ">
-            <div className="" style={{ width: 250, height: 250 }} id="lottie" />
+          <div className="d-flex justify-content-center vh-100 align-items-center">
+            <div
+              className="spinner-border"
+              style={{ width: "5rem", height: "5rem" }}
+              role="status"
+            >
+              <span className="visually-hidden">Loading...</span>
+            </div>
           </div>
         </>
-      )}
-
-      {!loading && (
+      ) : (
         <>
           <div className="container d-flex justify-content-between  my-4">
             <div className="h3">Trend Prediction</div>
@@ -315,6 +330,7 @@ const TrendPrediction = () => {
           <Disclaimer />
         </>
       )}
+
       <Footer />
     </div>
   );

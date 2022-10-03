@@ -14,21 +14,21 @@ const LogoutButton = () => {
     <>
       {isAuthenticated && (
         <div className="col d-flex justify-content-end">
-          <div class="dropdown dropstart">
+          <div className="dropdown drop">
             {/* <div
-              class="btn dropdown-toggle d-flex justify-content-center align-items-center"
+              className="btn dropdown-toggle d-flex justify-content-center align-items-center"
               data-bs-toggle="dropdown"
             ></div> */}
             <div
-              classsName="cursor-pointer btn dropdown-toggle d-flex justify-content-center align-items-center"
+              className="cursor-pointer btn dropdown-toggle d-flex justify-content-center align-items-center"
               data-bs-toggle="dropdown"
               role="button"
             >
-              <img src={Avatar} alt="Avatar" classsName="img-fluid"></img>
+              <img src={Avatar} alt="Avatar" className="img-fluid"></img>
             </div>
-            <ul class="dropdown-menu">
+            <ul className="dropdown-menu">
               <li>
-                <a class="dropdown-item" href="settingpage">
+                <a className="dropdown-item" href="settingpage">
                   <img
                     src={Setting}
                     className="img-fuid me-3"
@@ -39,7 +39,7 @@ const LogoutButton = () => {
                 </a>
               </li>
               <li onClick={() => logout()}>
-                <a class="dropdown-item" href="">
+                <a className="dropdown-item" href="">
                   <img
                     src={Logout}
                     className="img-fuid me-3"
